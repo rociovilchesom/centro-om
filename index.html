@@ -228,7 +228,8 @@ p{margin:0}
 .espacio-foto{margin:0 0 clamp(3rem,7vw,5rem);position:relative}
 .espacio-foto img{width:100%;height:clamp(16rem,38vw,34rem);object-fit:cover;object-position:50% 55%;display:block}
 .espacio-foto figcaption{position:absolute;right:max(20px,2vw);bottom:.8rem;font-size:.75rem;letter-spacing:.04em;color:rgba(242,238,232,.85)}
-.espacio ul{margin:0;padding-left:1.1rem;display:grid;gap:.5rem}
+.espacio-texto{align-self:end}
+.espacio-texto p{font:400 clamp(1.05rem,1.4vw,1.2rem)/1.6 var(--f-titulo);color:var(--tinta)}
 
 /* Contacto */
 .contacto{background:var(--tierra);color:var(--marfil);text-align:center}
@@ -437,12 +438,10 @@ p{margin:0}
         <h2 id="t-espacio">Un lugar pensado para que tu cuerpo baje la guardia</h2>
         <p>Estamos preparando el centro en Alella con el mismo cuidado que ponemos en el tratamiento.</p>
       </div>
-      <ul>
-        <li>Sin perfumes ni ambientadores químicos.</li>
-        <li>Salas silenciosas, sin ruido de pasillo.</li>
-        <li>Una sala de espera con infusiones y biblioteca.</li>
-        <li>Luz natural y materiales cálidos.</li>
-      </ul>
+      <div class="pila espacio-texto">
+        <p>Cada detalle está pensado para crear un ambiente que ayude a tu sistema nervioso a regularse. Por eso usamos luz cálida y materiales orgánicos, prescindimos de perfumes y ambientadores químicos, y cuidamos que las salas sean silenciosas.</p>
+        <p>En la sala de espera encontrarás un rincón para reconfortarte con una bebida caliente y un buen libro.</p>
+      </div>
     </div>
   </section>
 
