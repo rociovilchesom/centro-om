@@ -174,6 +174,12 @@ p{margin:0}
 .pasos li .paso-icono{grid-column:1;grid-row:1/span 3;margin:0}
 }
 @media (prefers-reduced-motion:reduce){.pasos li:hover .paso-icono{transform:none}}
+.destino{display:grid;justify-items:center;text-align:center;gap:.9rem;margin-top:2.5rem}
+.destino::before{content:"";height:3rem;border-left:1.5px dashed var(--dorado);opacity:.8}
+.destino .anillo{width:3.25rem;height:3.25rem;border-radius:50%;border:7px solid #BAC4B8}
+.destino p{max-width:32rem;font:400 1.3rem/1.45 var(--f-titulo);color:var(--tierra)}
+.destino strong{display:block;font:500 .74rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+@media (max-width:900px){.destino{justify-items:start;text-align:left;margin-top:0;padding-left:.5rem}.destino::before{margin-left:1.6rem}}
 
 /* Servicios */
 .servicios{background:var(--bosque);color:var(--marfil)}
@@ -340,7 +346,7 @@ p{margin:0}
     <div class="envoltura">
       <div class="pila lectura">
         <p class="etiqueta">Cómo trabajamos</p>
-        <h2 id="t-proceso">Un proceso claro desde el primer día</h2>
+        <h2 id="t-proceso">Un proceso claro para regularte, paso a paso</h2>
         <p class="suave">Sabrás en cada momento qué hacemos, por qué y cómo vas avanzando.</p>
       </div>
       <ol class="pasos">
@@ -351,6 +357,7 @@ p{margin:0}
         <li><span class="paso-icono" aria-hidden="true"><svg viewBox="40 40 176 176"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"> <path d="M131 196 C128 172 126 150 128 128 C130 106 127 84 121 60"/> <path d="M128 148 C114 143 101 133 92 119 C86 109 83 99 82 90"/> <path d="M128 128 C141 121 153 110 160 97 C164 89 167 80 168 70"/> <path d="M126 98 C116 91 108 82 104 71"/> <path d="M160 98 C168 96 175 91 180 84"/> <path d="M93 121 C85 121 77 118 71 112"/> <path d="M124 80 C131 74 138 70 146 69"/> <circle cx="131" cy="202" r="4"/> </g></svg><span class="paso-num">4</span></span><p class="dato">Tratamiento y hábitos</p><h3>Tu itinerario</h3><p>Combinamos las herramientas que necesitas para que recuperes el equilibrio y puedas sostenerlo en el tiempo.</p></li>
         <li><span class="paso-icono" aria-hidden="true"><svg viewBox="40 40 176 176"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"> <path d="M75 91 C75 80 82 73 94 73 H163 C175 73 181 81 181 92 V173 C181 184 174 191 162 191 H94 C82 191 75 184 75 173 Z"/> <path d="M104 63 V85 M152 63 V85 M76 108 H180"/> <path d="M103 146 L121 163 L155 127"/> </g></svg><span class="paso-num">5</span></span><p class="dato">Periódicamente</p><h3>Seguimiento</h3><p>Revisamos tu evolución con datos concretos y ajustamos el plan.</p></li>
       </ol>
+        <div class="destino"><span class="anillo" aria-hidden="true"></span><p><strong>El objetivo</strong>Una ventana de tolerancia más amplia y la capacidad de volver a tu eje por tu cuenta.</p></div>
     </div>
   </section>
 
@@ -358,7 +365,7 @@ p{margin:0}
     <div class="envoltura">
       <div class="pila lectura">
         <p class="etiqueta">Acompañamiento</p>
-        <h2 id="t-servicios">Distintas herramientas, porque cada persona necesita algo diferente</h2>
+        <h2 id="t-servicios">Distintas herramientas, un mismo objetivo: que tu sistema nervioso recupere el equilibrio</h2>
         <p class="suave">Acompañamos a adultos, niños, adolescentes y parejas.</p>
       </div>
       <div class="rejilla">
