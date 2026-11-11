@@ -217,7 +217,8 @@ p{margin:0}
 .par{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
 .par>*{align-content:start}
 .hueco-foto{aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 14px 14px;background:var(--arena);display:grid;place-items:center;color:var(--tierra);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:1rem}
-.foto-equipo{width:100%;height:auto;padding:0;object-fit:cover;object-position:50% 35%;display:block}
+.foto-equipo{width:100%;max-width:22rem;height:auto;aspect-ratio:9/19;padding:0;object-fit:cover;object-position:50% 50%;display:block;border-radius:999px;justify-self:center;margin-inline:auto}
+@media (max-width:820px){.hueco-foto.foto-equipo{aspect-ratio:9/19;max-width:13rem;border-radius:999px}}
 .cita{font:italic 400 1.35rem/1.45 var(--f-titulo);color:var(--bosque);border-left:2px solid var(--dorado);padding-left:1.25rem}
 @media (max-width:820px){.par{grid-template-columns:minmax(0,1fr)}.hueco-foto{aspect-ratio:3/2;border-radius:14px}}
 .espacio{background:var(--arena)}
