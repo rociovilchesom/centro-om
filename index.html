@@ -204,6 +204,11 @@ p{margin:0}
 .valor h3{color:var(--bosque)}
 .valor p{color:var(--tinta-suave);font-size:.98rem}
 @media (max-width:820px){.valores{grid-template-columns:minmax(0,1fr)}}
+.somos{display:grid;grid-template-columns:22rem minmax(0,1fr);gap:4rem;align-items:center}
+.somos-foto{width:100%;height:100%;max-height:40rem;object-fit:cover;border-radius:.25rem}
+.somos .valores{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.somos{grid-template-columns:minmax(0,1fr);gap:2.5rem}.somos-foto{height:14rem;object-position:50% 40%}}
+@media (max-width:600px){.somos .valores{grid-template-columns:minmax(0,1fr)}}
 
 /* Sobre mí y espacio */
 .dos{background:var(--marfil)}
@@ -381,6 +386,9 @@ p{margin:0}
 
   <section class="banda" aria-labelledby="t-valores">
     <div class="envoltura">
+      <div class="somos">
+      <img class="somos-foto" src="img/humo-lino-480.webp" srcset="img/humo-lino-480.webp 480w, img/humo-lino-736.webp 736w" sizes="(max-width:900px) 100vw, 22rem" width="736" height="1308" alt="Humo que se mueve con suavidad sobre una tela de lino" loading="lazy" decoding="async">
+      <div>
       <div class="pila lectura">
         <p class="etiqueta">Cómo somos</p>
         <h2 id="t-valores">La presión no regula a nadie</h2>
@@ -392,6 +400,8 @@ p{margin:0}
         <div class="valor"><h3>Con base científica</h3><p>Usamos métodos con respaldo científico y te explicamos por qué pueden servirte.</p></div>
         <div class="valor"><h3>Cercanos</h3><p>Un trato humano, sin etiquetas ni promesas de resultados rápidos.</p></div>
         <div class="valor"><h3>Flexibles</h3><p>Tu itinerario se define contigo y se ajusta a medida que avanzas.</p></div>
+      </div>
+      </div>
       </div>
     </div>
   </section>
