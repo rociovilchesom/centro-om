@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#7F6246">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>Encuesta de regulación · Om</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+@font-face{font-family:"Tenor Sans";src:local("Optima nova"),local("Optima"),url(../fonts/tenor-sans-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Poiret One";src:url(../fonts/poiret-one-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Jost";src:url(../fonts/jost-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Jost";src:url(../fonts/jost-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+/* Layout: una columna de lectura sobre marfil; cada apartado es una hoja; barra de progreso fija arriba. */
+:root{
+  --bg:#F2EEE8; --hoja:#FBF9F6; --tinta:#3B342C; --suave:#5E554B; --linea:#D9CFC3;
+  --tierra:#7F6246; --tierra-osc:#6A513A; --bosque:#475045; --dorado:#BFA774; --arena:#C8B9A5; --gris-verde:#909B99; --beige:#D6CBBF;
+  --sobre-acento:#FBF9F6; --aviso:#9A4A2E; --aviso-fondo:#F6E6DE;
+  --f-titulo:"Tenor Sans", Optima, Candara, "Segoe UI", sans-serif;
+  --f-claim:"Poiret One", "Century Gothic", sans-serif;
+  --f-texto:"Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --lectura:42rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1E211D; --hoja:#272B26; --tinta:#ECE6DD; --suave:#B9B0A4; --linea:#3E433C;
+  --tierra:#C9A27E; --tierra-osc:#DDB993; --bosque:#8FA08A; --dorado:#CDB77F; --arena:#A8987F; --gris-verde:#8E9C99; --beige:#5A5248;
+  --sobre-acento:#1E211D; --aviso:#E8A78C; --aviso-fondo:#3A2A24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1E211D; --hoja:#272B26; --tinta:#ECE6DD; --suave:#B9B0A4; --linea:#3E433C;
+  --tierra:#C9A27E; --tierra-osc:#DDB993; --bosque:#8FA08A; --dorado:#CDB77F; --arena:#A8987F; --gris-verde:#8E9C99; --beige:#5A5248;
+  --sobre-acento:#1E211D; --aviso:#E8A78C; --aviso-fondo:#3A2A24; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--tinta);font-family:var(--f-texto);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 4rem}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.envoltorio{max-width:var(--lectura);margin:0 auto;display:flex;flex-direction:column;gap:1.5rem}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:400;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:2.1rem;color:var(--tierra)}
+h2{font-size:1.45rem}
+h3{font-size:1.15rem}
+p{margin:0}
+.cabecera{display:flex;flex-direction:column;gap:.9rem;padding-block:2.5rem .5rem}
+.marca{display:flex;align-items:center;gap:.9rem;color:var(--tierra)}
+.marca svg{width:68px;height:auto}
+.claim{font-family:var(--f-claim);text-transform:uppercase;letter-spacing:.18em;font-size:.8rem;color:var(--suave)}
+
+.progreso{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:.6rem;display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--suave)}
+.progreso .pista{flex:1;height:4px;background:var(--linea);border-radius:999px;overflow:hidden}
+.progreso .relleno{height:100%;width:0;background:var(--tierra);transition:width .3s}
+.progreso span{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.hoja{background:var(--hoja);border:1px solid var(--linea);border-radius:14px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:1.1rem}
+.hoja ul{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.consigna{background:var(--bg);border-radius:10px;padding:.9rem 1rem;font-size:.97rem}
+.consigna b{font-weight:500}
+.num{font-family:var(--f-claim);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tierra)}
+
+/* Datos y consentimiento */
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.campos{grid-template-columns:1fr}}
+label.campo{display:flex;flex-direction:column;gap:.3rem;font-size:.9rem;color:var(--suave)}
+input[type=text],input[type=email]{font:inherit;color:var(--tinta);background:var(--bg);border:1px solid var(--linea);border-radius:10px;padding:.65rem .8rem}
+input:focus-visible,button:focus-visible{outline:2px solid var(--tierra);outline-offset:2px}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-size:.95rem}
+.check input{width:1.2rem;height:1.2rem;margin-top:.25rem;accent-color:var(--tierra);flex:none}
+
+/* Apartado 1 */
+.reparto{display:flex;flex-direction:column;gap:.6rem}
+.barra-apilada{display:flex;height:22px;border-radius:999px;overflow:hidden;background:var(--linea)}
+.barra-apilada div{height:100%;transition:width .2s}
+.resto{font-size:.95rem;color:var(--suave);font-variant-numeric:tabular-nums}
+.resto.listo{color:var(--bosque);font-weight:500}
+.estado{border-top:1px solid var(--linea);padding-top:1.1rem;display:flex;flex-direction:column;gap:.55rem}
+.estado-cab{display:flex;align-items:center;gap:.6rem}
+.punto{width:12px;height:12px;border-radius:50%;flex:none}
+.estado .resumen{font-style:italic}
+.estado .desc{font-size:.93rem;color:var(--suave)}
+.deslizador{display:flex;align-items:center;gap:.9rem}
+.deslizador input[type=range]{flex:1;min-width:0;accent-color:var(--tierra);height:28px}
+.deslizador output{font-variant-numeric:tabular-nums;min-width:3.6rem;text-align:right;font-weight:500;font-size:1.05rem}
+.pasos{display:flex;gap:.4rem}
+.pasos button{font:inherit;width:2.2rem;height:2.2rem;border-radius:999px;border:1px solid var(--linea);background:var(--bg);color:var(--tinta);cursor:pointer;font-size:1.1rem;line-height:1}
+.pasos button:hover{border-color:var(--tierra)}
+
+/* Ítems con botones */
+.item{border-top:1px solid var(--linea);padding-top:1rem;display:flex;flex-direction:column;gap:.7rem}
+.item.falta .enunciado{color:var(--aviso)}
+.opciones{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;border:0;padding:0;margin:0}
+.opciones legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.opciones label{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;min-height:3rem;padding:.35rem .4rem;border:1px solid var(--linea);border-radius:12px;font-size:.82rem;line-height:1.25;cursor:pointer;background:var(--bg);transition:background .15s,border-color .15s}
+.opciones input{position:absolute;opacity:0;pointer-events:none}
+.opciones label:hover{border-color:var(--tierra)}
+.opciones input:checked + span{color:var(--sobre-acento)}
+.opciones label:has(input:checked){background:var(--tierra);border-color:var(--tierra)}
+.opciones label:has(input:focus-visible){outline:2px solid var(--tierra);outline-offset:2px}
+@media (max-width:600px){
+  .opciones{grid-template-columns:1fr}
+  .opciones label{justify-content:flex-start;text-align:left;min-height:2.6rem;padding-inline:1rem;font-size:.95rem}
+}
+
+.enviar{display:flex;flex-direction:column;gap:.8rem;align-items:flex-start}
+.boton{font:inherit;font-weight:500;background:var(--tierra);color:var(--sobre-acento);border:0;border-radius:999px;padding:.85rem 1.8rem;cursor:pointer;font-size:1rem}
+.boton:hover{background:var(--tierra-osc)}
+.boton.secundario{background:transparent;color:var(--tierra);border:1px solid var(--tierra)}
+.error{background:var(--aviso-fondo);color:var(--aviso);border-radius:10px;padding:.7rem 1rem;font-size:.95rem}
+
+.gracias{text-align:left}
+.resultado-paciente{display:flex;flex-direction:column;gap:.4rem;padding-block:.5rem}
+.cifra{font-family:var(--f-titulo);font-size:3.2rem;line-height:1;color:var(--tierra);font-variant-numeric:tabular-nums}
+.cifra small{font-size:1.1rem;color:var(--suave)}
+.nivel{font-weight:500}
+.escala-niveles{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:.3rem}
+.escala-niveles span{height:8px;border-radius:999px;background:var(--linea)}
+.escala-niveles span.on{background:var(--tierra)}
+.previa{border:1px dashed var(--tierra);border-radius:14px;padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.8rem;font-size:.95rem}
+.previa h3{color:var(--tierra)}
+.fila{display:grid;grid-template-columns:minmax(0,1fr) 3.2rem 7rem;gap:.8rem;align-items:center}
+.fila .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.fila .b{height:8px;background:var(--linea);border-radius:999px;overflow:hidden}
+.fila .b i{display:block;height:100%;background:var(--tierra)}
+.nota{font-size:.85rem;color:var(--suave)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <header class="cabecera">
+    <div class="marca">
+      <svg viewBox="0 0 535.5 199.1" aria-label="Om" role="img"><path fill="currentColor" d="m 336.71021,97.488063 c 1.2495,-3.926999 2.98095,-8.639399 5.4978,-14.619148 7.4256,-17.617947 19.7778,-33.772194 36.057,-43.696792 13.04834,-7.961099 29.18474,-11.156248 44.01809,-8.121749 30.13079,6.158249 42.05459,33.986394 47.33819,61.29689 3.1773,16.386296 5.4978,28.167296 6.9615,35.342996 1.23165,6.01545 2.9631,12.7092 5.19435,20.08124 4.2483,14.0301 10.4958,26.04315 21.29505,36.00345 9.19274,8.4609 19.99199,11.87025 32.43344,10.22805 v 3.48075 c -4.94445,0.5355 -10.29945,0.7854 -16.065,0.7854 -18.61754,-0.0179 -37.02089,-7.19355 -51.24734,-18.93885 -17.04675,-14.08365 -23.86544,-35.50364 -28.02449,-56.60234 -3.23085,-16.3863 -5.55135,-30.452096 -9.0321,-44.392944 -2.6775,-10.781398 -6.7116,-20.348996 -14.58345,-27.703195 -3.83775,-3.58785 -8.4252,-6.247499 -13.61955,-7.318499 -12.51285,-2.5704 -24.06179,2.2491 -33.48659,10.460098 -15.72585,13.690948 -26.0253,33.718645 -30.18435,53.96054 -0.6069,2.9274 -0.6783,6.30105 -0.3927,9.6033 1.76715,20.58105 6.94365,42.71504 19.86705,59.29769 6.44385,8.2824 16.065,15.40455 26.4537,16.76115 4.80164,0.62475 9.60329,0.4284 14.42279,-0.6069 v 3.5343 c -10.37085,2.7489 -20.95589,2.69535 -31.71944,-0.12495 -24.9543,-6.55095 -43.76819,-25.29345 -52.51469,-49.42665 -2.9631,-8.17529 -5.30145,-17.02889 -6.9972,-26.54294 -2.98095,-16.6719 -5.1051,-28.220846 -6.37245,-34.646845 -2.87385,-14.512048 -8.6394,-32.790445 -22.33035,-40.537343 -4.9266,-2.7846 -10.3173,-4.19475 -16.15424,-4.19475 -17.0646,-0.01785 -31.39815,11.602498 -40.5195,25.061396 -2.12415,3.1416 -4.7838,7.925399 -7.94325,14.369248 0.76755,4.266149 1.7136,8.353798 1.8921,12.494998 0.2856,6.836549 0.37485,14.476346 -0.8925,21.723446 -3.0702,17.36805 -10.17449,32.59409 -21.31289,45.67814 -17.9928,21.1344 -42.9471,34.57545 -70.45394,38.14545 -8.72865,1.1424 -18.5283,0.7854 -27.881696,0.33915 -5.194349,-0.2499 -9.531899,-1.1067 -15.226048,-2.37405 C 53.198711,189.98675 27.816015,173.8325 12.822018,149.21735 5.2357691,136.79376 0.07711999,121.29996 0.00572,106.28811 -0.02997999,98.719713 0.05926999,92.133064 1.5229697,85.010915 11.108418,38.565223 54.109061,6.3459782 99.483753,0.65182917 103.87485,0.09847926 109.05135,-0.0978707 115.01325,0.04492927 153.26579,1.0445291 188.41244,23.089275 206.20889,56.73652 c 2.65964,5.033699 4.31969,9.763948 7.17569,16.564797 4.83735,-8.978549 10.3173,-16.529097 16.4934,-22.955096 23.43705,-24.365246 64.24214,-29.773795 87.78629,-1.80285 3.37365,3.998399 6.51525,9.049949 9.40695,15.118948 4.90874,10.299448 7.49699,22.758746 9.62114,33.825744 z M 163.33319,169.6913 C 204.03119,123.78111 189.14429,46.365671 139.03935,13.842977 109.9974,-5.0066199 78.634957,6.3816782 57.00076,29.961524 47.111862,40.742922 39.954013,53.04157 35.545064,66.857468 22.710916,107.07351 33.885014,155.3756 69.103058,181.0439 c 8.210999,5.97975 17.671497,10.12095 28.417196,12.44145 2.623946,0.5712 5.890496,0.87465 9.817496,0.91035 4.76595,0.0536 8.05035,0 9.83535,-0.16065 5.47995,-0.4998 10.97775,-1.8207 16.4934,-3.9627 11.65605,-4.5339 21.54494,-11.40615 29.68454,-20.58105 z"/></svg>
+      <span class="claim">Tu sistema nervioso en equilibrio</span>
+    </div>
+    <h1>Encuesta de regulación</h1>
+    <p>Te llevará unos 10 minutos. Tus respuestas nos ayudan a ver cómo está tu sistema nervioso y a seguir tu evolución durante el programa.</p>
+  </header>
+
+  <div class="progreso" aria-hidden="true"><div class="pista"><div class="relleno" id="relleno"></div></div><span id="cuenta">0 de 0</span></div>
+
+  <form id="encuesta" novalidate>
+    <div class="envoltorio">
+      <section class="hoja">
+        <h2>Antes de empezar</h2>
+        <ul>
+          <li>La encuesta tiene siete apartados. Al principio de cada uno, o de cada grupo, encontrarás una breve instrucción que te indica qué periodo de tiempo tener en cuenta al responder (por ejemplo, las últimas 2 semanas) y cómo marcar tu respuesta. El periodo puede cambiar de un apartado a otro.</li>
+          <li>Si ese periodo no ha sido habitual para ti (vacaciones, una enfermedad, un acontecimiento excepcional), piensa en las semanas habituales más recientes.</li>
+          <li>Los ejemplos de cada apartado son orientativos, no una lista cerrada. Si has vivido algo parecido aunque no aparezca mencionado de forma explícita, tenlo en cuenta en tu respuesta.</li>
+          <li>No hay respuestas buenas ni malas. Lo que nos interesa es cómo estás tú.</li>
+        </ul>
+        <div class="campos">
+          <label class="campo" for="nombre">Nombre y apellidos<input type="text" id="nombre" name="nombre" autocomplete="name" required></label>
+          <label class="campo" for="email">Correo electrónico<input type="email" id="email" name="email" autocomplete="email" required></label>
+        </div>
+        <input type="text" name="web" id="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <label class="check" for="consentimiento"><input type="checkbox" id="consentimiento" name="consentimiento" required><span>Doy mi consentimiento para que Om trate mis respuestas, que son datos de salud, con el único fin de valorar y seguir mi proceso terapéutico. Puedo pedir que se borren en cualquier momento. Más información en la <a href="../privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+      </section>
+
+      <section class="hoja" id="ap1">
+        <span class="num">Apartado 1</span>
+        <h2>Niveles de alerta</h2>
+        <p class="consigna"><b>Cómo responder a este apartado:</b> piensa en las últimas 2 semanas y reparte el 100 % de tu tiempo entre los cinco estados que se describen a continuación, según el tiempo que has pasado en cada uno. Marca el porcentaje de cada estado con su barra; entre todos tienen que sumar 100 %. Por ejemplo: Seguridad y conexión 40 %, Logro 30 %, Lucha 20 %, Huida 10 % y Congelamiento o colapso 0 %.</p>
+        <ul>
+          <li>Para saber si has pasado por un estado, basta con que te haya pasado alguna de las situaciones o sensaciones de su descripción; no hace falta que se den todas.</li>
+          <li>Todos pasamos por todos los estados. Aquí importa cómo se reparte tu tiempo.</li>
+        </ul>
+        <div class="reparto" aria-live="polite">
+          <div class="barra-apilada" id="apilada"></div>
+          <p class="resto" id="resto">Te queda 100 % por repartir.</p>
+        </div>
+        <div id="estados"></div>
+      </section>
+
+      <div id="apartados" class="envoltorio"></div>
+
+      <div class="enviar">
+        <p class="error" id="error" hidden></p>
+        <button type="submit" class="boton" id="btn-enviar">Enviar respuestas</button>
+      </div>
+    </div>
+  </form>
+
+  <section class="hoja gracias" id="gracias" hidden>
+    <h2>Gracias</h2>
+    <p>Hemos recibido tus respuestas.</p>
+    <div class="resultado-paciente">
+      <p class="nota">Tu índice de desregulación</p>
+      <p class="cifra"><span id="p-indice">0</span><small> / 100</small></p>
+      <p id="p-nivel" class="nivel"></p>
+      <div class="escala-niveles" id="p-escala"></div>
+    </div>
+    <p>Es una foto de cómo está tu sistema nervioso ahora, no un diagnóstico. Lo comentaremos contigo en tu próxima sesión, junto con el resto de tu valoración.</p>
+  </section>
+
+  <section class="previa" id="previa" hidden>
+    <h3>Vista de la terapeuta</h3>
+    <p class="nota">Solo aparece en esta vista previa. En la web, el paciente ve únicamente el agradecimiento y estos resultados llegan a la hoja de Google de OM.</p>
+    <div id="resultados"></div>
+    <button type="button" class="boton secundario" id="btn-otra">Volver a la encuesta</button>
+  </section>
+</div>
+
+<script>
+const MODO_PREVIA = false;
+const URL_HOJA = "https://script.google.com/macros/s/AKfycbykz1lf_J-RFGSCYGqmQO6UWLXsP6kUAlZfGgKSLqLQz6xWk4M0D8UliChcGTGVZiYQ/exec";
+
+const FREC = ["Casi nunca","A veces","La mitad de las veces","La mayoría de las veces","Casi siempre"];
+const GRADO = ["Nada","Poco","Algo","Bastante","Mucho"];
+const MOLESTIA = ["Nada","Un poco","Algo","Bastante","Mucho"];
+
+const ESTADOS = [
+  {id:"seguridad",nombre:"Seguridad y conexión",color:"var(--bosque)",resumen:"Te sientes seguro/a y a gusto, a solas y con los demás, tanto cuando descansas como cuando estás activo/a.",desc:"Sentirte en calma y a gusto, tanto a solas como con otras personas; sentirte acompañado/a cuando estás con gente y confiar en las personas de tu entorno; estar presente en lo que haces; dedicar tiempo a lo que te gusta (por ejemplo, una afición); tener ganas de avanzar en tus proyectos y disfrutar de lo que consigues; descansar y recuperarte."},
+  {id:"logro",nombre:"Logro",color:"var(--dorado)",resumen:"Tu energía está puesta en conseguir resultados o en demostrar lo que vales, y te cuesta parar.",desc:"Tener la atención puesta en conseguir metas, resultados o reconocimiento; sentir que tu valor depende de lo que consigues; necesitar haber cumplido con lo que te habías propuesto para permitirte descansar; pasar al siguiente objetivo sin detenerte, o deteniéndote muy poco, a disfrutar de lo logrado; esforzarte por causar buena impresión (por ejemplo, en una reunión o en una fiesta) y sentirte agotado/a después."},
+  {id:"lucha",nombre:"Lucha",color:"var(--tierra)",resumen:"Tu energía te lleva a mantenerte en movimiento, a controlar o a defenderte.",desc:"Estar en «modo hacer»: notar que tienes que estar haciendo algo y que te cuesta parar porque, cuando paras, te entra ansiedad; tender a querer tenerlo todo bajo control; enfadarte o irritarte cuando algo no sale como querías o como lo tenías previsto; incomodarte cuando algo no está perfecto o necesitar que lo esté para poder disfrutar; sentirte atacado/a o juzgado/a y necesitar defenderte; reaccionar con brusquedad o discutir por asuntos que, al pensarlo después, no te parecen tan graves."},
+  {id:"huida",nombre:"Huida",color:"var(--arena)",resumen:"Tu atención está puesta en vigilar, evitar lo que te incomoda y ponerte a salvo de lo que pueda pasar.",desc:"Sentir nervios o inquietud en el cuerpo, con necesidad de moverte aunque estés sentado/a (por ejemplo, mover las piernas una y otra vez); estar en guardia, pendiente de lo que pueda pasar; sobresaltarte ante un sonido inesperado o un cambio pequeño; sentirte incómodo/a con multitudes, olores o determinadas personas sin saber por qué; evitar situaciones, lugares o personas que te generan malestar; notar opresión en el pecho, un nudo en la garganta, el corazón acelerado o falta de aire; tener momentos de angustia o de pánico."},
+  {id:"congelamiento",nombre:"Congelamiento o colapso",color:"var(--gris-verde)",resumen:"Tu energía baja y te cuesta reaccionar o ponerte en marcha.",desc:"Quedarte bloqueado/a o en blanco cuando la situación te pide reaccionar (por ejemplo, en una discusión, ante un imprevisto o cuando te hacen una pregunta difícil); dejar pasar los problemas esperando que se resuelvan solos; aplazar decisiones; tener dificultad para defenderte o decir lo que piensas; costarte ponerte en marcha y quedarte en el sofá o con el móvil sin hacer lo que tenías previsto; aislarte en casa porque no tienes energía para ver gente; sentirte apagado/a, sin energía ni ganas, como en pausa o anestesiado/a."}
+];
+
+// inv: ítem sano, se puntúa al revés. dim: subescala en Vínculos.
+const APARTADOS = [
+  {n:2,id:"regulacion",titulo:"Regulación emocional",escala:FREC,
+   consigna:"<b>Cómo responder a los apartados 2, 3, 4 y 5:</b> piensa en las últimas 2 semanas y marca con qué frecuencia te ha pasado cada situación: Casi nunca, A veces, La mitad de las veces, La mayoría de las veces o Casi siempre.",
+   items:[
+    ["Reaccionar con más fuerza de lo que la situación requiere (enfado, llanto, miedo o susto): sabes que no es para tanto, pero lo vives así y no puedes evitarlo."],
+    ["Desconectarte de lo que está pasando (por ejemplo, irte con la mente a otro lugar, dejar de sentir o no reconocerte)."],
+    ["Guardarte lo que sientes y no mostrarlo, aunque te esté afectando."],
+    ["Recurrir a la comida, el alcohol u otras sustancias, las pantallas, las compras o el trabajo para calmar el malestar o evitar sentirlo."],
+    ["Después de una situación estresante, poder volver a la calma con recursos que te sirven (por ejemplo, respirar, moverte o hablar con alguien de confianza).",1],
+    ["Darte cuenta de qué emoción sientes y poder ponerle nombre.",1],
+    ["Notar en qué lugar del cuerpo sientes tus emociones.",1],
+    ["Darte cuenta de cuándo tienes hambre, sed, frío, cansancio o ganas de ir al baño.",1]]},
+  {n:3,id:"pensamiento",titulo:"Pensamiento y atención",escala:FREC,
+   items:[
+    ["Tener pensamientos que se repiten o se aceleran, y no poder frenarlos."],
+    ["Tener neblina mental: notar la mente nublada o lenta, con dificultad para concentrarte o para recordar."],
+    ["Tener la mente clara y poder concentrarte en lo que haces.",1]]},
+  {n:4,id:"autocuidado",titulo:"Autocuidado",escala:FREC,
+   items:[
+    ["Ponerte en último lugar, por ejemplo, decir que sí cuando quieres decir que no o hacer lo que no te apetece para no quedar mal."],
+    ["Defender tu espacio y lo que necesitas con tranquilidad, sin tener que pelear.",1],
+    ["Hablarte con dureza o exigirte más de lo que puedes dar."],
+    ["Tener tiempo para ti, para descansar o para hacer lo que te gusta, sin sentir culpa.",1],
+    ["Sentirte culpable aunque no hayas hecho nada malo."],
+    ["Sentir vergüenza de cómo eres o sentir que no eres suficiente."],
+    ["Tratarte con comprensión y amabilidad cuando algo te sale mal o atraviesas un momento difícil.",1],
+    ["Estar pendiente de la aprobación de los demás, por ejemplo, compararte con otras personas o cambiar tu forma de ser para encajar."]]},
+  {n:5,id:"sueno",titulo:"Sueño y energía",escala:FREC,
+   items:[
+    ["Tardar en quedarte dormido/a o despertarte por la noche sin poder volver a dormirte."],
+    ["Tener pesadillas."],
+    ["Levantarte sin sentirte descansado/a."],
+    ["Sentir ganas y curiosidad, y poder disfrutar del día a día.",1],
+    ["Funcionar a máximo rendimiento y, de pronto, quedarte sin fuerzas."]]},
+  {n:6,id:"vinculos",titulo:"Vínculos",escala:GRADO,
+   consigna:"<b>Cómo responder a este apartado:</b> piensa en cómo te sientes en general en tus relaciones cercanas (pareja, familia o amistades) y marca hasta qué punto te describe cada frase: Nada, Poco, Algo, Bastante o Mucho.",
+   items:[
+    ["Sentir que tienes personas con las que contar y que te acompañan.",0,"seguridad"],
+    ["Sentir angustia cuando alguien se aleja, tarda en responderte o se enfada contigo.",0,"ansiedad"],
+    ["Pedir ayuda y expresar lo que necesitas sin sentir que molestas.",0,"seguridad"],
+    ["Sentirte incómodo/a cuando alguien busca más cercanía emocional contigo o tender a tomar distancia.",0,"evitacion"]]},
+  {n:7,id:"cuerpo",titulo:"Cuerpo",escala:MOLESTIA,
+   consigna:"<b>Cómo responder a este apartado:</b> piensa en las últimas 4 semanas y marca cuánto te ha molestado cada uno de estos problemas: Nada, Un poco, Algo, Bastante o Mucho.",
+   items:[
+    ["Molestias digestivas: dolor de estómago, ardor, hinchazón, estreñimiento o diarrea."],
+    ["Dolor de espalda, cuello, cabeza o articulaciones, o tensión en la mandíbula (apretarla o rechinar los dientes)."],
+    ["Problemas de piel: brotes, eccemas, psoriasis o picores."],
+    ["Molestias menstruales o cambios hormonales."],
+    ["Mareos o vértigo."],
+    ["Alergias, resfriados, infecciones, herpes o brotes de enfermedades autoinmunes."],
+    ["Manos o pies fríos, sudor excesivo, temblores o tics."]]}
+];
+
+const reparto = Object.fromEntries(ESTADOS.map(e=>[e.id,0]));
+const suma = () => Object.values(reparto).reduce((a,b)=>a+b,0);
+
+function pintarEstados(){
+  const cont = document.getElementById("estados");
+  ESTADOS.forEach(e=>{
+    const d = document.createElement("div");
+    d.className = "estado";
+    d.innerHTML = `<div class="estado-cab"><span class="punto" style="background:${e.color}"></span><h3>${e.nombre}</h3></div>
+      <p class="resumen">${e.resumen}</p><p class="desc">${e.desc}</p>
+      <div class="deslizador">
+        <input type="range" id="r-${e.id}" min="0" max="100" step="5" value="0" aria-label="Porcentaje de ${e.nombre}">
+        <div class="pasos"><button type="button" data-d="-5" aria-label="Restar 5 % a ${e.nombre}">−</button><button type="button" data-d="5" aria-label="Sumar 5 % a ${e.nombre}">+</button></div>
+        <output id="o-${e.id}">0 %</output>
+      </div>`;
+    cont.appendChild(d);
+    const r = d.querySelector("input");
+    r.addEventListener("input",()=>fijar(e.id,+r.value));
+    d.querySelectorAll(".pasos button").forEach(b=>b.addEventListener("click",()=>fijar(e.id,reparto[e.id]+ +b.dataset.d)));
+  });
+  actualizarReparto();
+}
+function fijar(id,v){
+  const max = reparto[id] + (100 - suma());
+  reparto[id] = Math.max(0,Math.min(v,max));
+  actualizarReparto();
+}
+function actualizarReparto(){
+  const ap = document.getElementById("apilada");
+  ap.innerHTML = ESTADOS.map(e=>`<div style="width:${reparto[e.id]}%;background:${e.color}" title="${e.nombre} ${reparto[e.id]} %"></div>`).join("");
+  ESTADOS.forEach(e=>{
+    document.getElementById("r-"+e.id).value = reparto[e.id];
+    document.getElementById("o-"+e.id).textContent = reparto[e.id]+" %";
+  });
+  const q = 100 - suma(), r = document.getElementById("resto");
+  r.textContent = q === 0 ? "Has repartido el 100 %." : `Te queda ${q} % por repartir.`;
+  r.classList.toggle("listo", q===0);
+  progreso();
+}
+
+function pintarApartados(){
+  const cont = document.getElementById("apartados");
+  APARTADOS.forEach(a=>{
+    const s = document.createElement("section");
+    s.className = "hoja"; s.id = "ap"+a.n;
+    let html = `<span class="num">Apartado ${a.n}</span><h2>${a.titulo}</h2>`;
+    if (a.consigna) html += `<p class="consigna">${a.consigna}</p>`;
+    a.items.forEach((it,i)=>{
+      const nombre = `${a.id}_${i+1}`;
+      html += `<div class="item" id="it-${nombre}"><p class="enunciado" id="en-${nombre}">${it[0]}</p>
+        <fieldset class="opciones" aria-labelledby="en-${nombre}"><legend>${it[0]}</legend>
+        ${a.escala.map((t,v)=>`<label for="${nombre}-${v}"><input type="radio" id="${nombre}-${v}" name="${nombre}" value="${v}"><span>${t}</span></label>`).join("")}
+        </fieldset></div>`;
+    });
+    s.innerHTML = html;
+    cont.appendChild(s);
+  });
+  cont.addEventListener("change",e=>{
+    const it = e.target.closest(".item"); if (it) it.classList.remove("falta");
+    progreso();
+  });
+}
+
+const TOTAL_ITEMS = 1 + APARTADOS.reduce((n,a)=>n+a.items.length,0);
+function respondidos(){
+  const f = document.getElementById("encuesta");
+  let n = suma()===100 ? 1 : 0;
+  APARTADOS.forEach(a=>a.items.forEach((_,i)=>{ if (f.querySelector(`input[name="${a.id}_${i+1}"]:checked`)) n++; }));
+  return n;
+}
+function progreso(){
+  const n = respondidos();
+  document.getElementById("cuenta").textContent = `${n} de ${TOTAL_ITEMS}`;
+  document.getElementById("relleno").style.width = (n/TOTAL_ITEMS*100)+"%";
+}
+
+function respuestas(){
+  const f = document.getElementById("encuesta"), r = {};
+  APARTADOS.forEach(a=>a.items.forEach((_,i)=>{
+    const c = f.querySelector(`input[name="${a.id}_${i+1}"]:checked`);
+    r[`${a.id}_${i+1}`] = c ? +c.value : null;
+  }));
+  return r;
+}
+
+// Puntuación: 0-100, más alto = más desregulación (salvo seguridad en Vínculos).
+function puntuar(r){
+  const media = arr => arr.reduce((a,b)=>a+b,0)/arr.length;
+  const res = { desregulacion: 100 - reparto.seguridad };
+  const fuera = ESTADOS.slice(1).map(e=>[e.nombre,reparto[e.id]]).sort((a,b)=>b[1]-a[1]);
+  res.perfil = fuera[0][1] > 0 ? fuera[0][0] : "—";
+  APARTADOS.forEach(a=>{
+    if (a.id==="vinculos"){
+      const dims = {seguridad:[],ansiedad:[],evitacion:[]};
+      a.items.forEach((it,i)=>dims[it[2]].push(r[`${a.id}_${i+1}`]));
+      res.vinculos = Math.round(media([...dims.seguridad.map(x=>4-x),...dims.ansiedad,...dims.evitacion])*25);
+      res.vinculos_ansiedad = Math.round(media(dims.ansiedad)*25);
+      res.vinculos_evitacion = Math.round(media(dims.evitacion)*25);
+    } else {
+      const v = a.items.map((it,i)=>{ const x = r[`${a.id}_${i+1}`]; return it[1] ? 4-x : x; });
+      res[a.id] = Math.round(media(v)*25);
+    }
+  });
+  const resto = ["regulacion","pensamiento","autocuidado","sueno","vinculos","cuerpo"].map(k=>res[k]);
+  res.indice = Math.round(0.5*res.desregulacion + 0.5*media(resto));
+  res.nivel = res.indice<=20?1:res.indice<=40?2:res.indice<=60?3:res.indice<=80?4:5;
+  res.nivel_nombre = ["","Regulación","Desregulación leve","Desregulación moderada","Desregulación alta","Desregulación muy alta"][res.nivel];
+  return res;
+}
+
+function mostrarResultados(p){
+  const filas = [
+    ["Apartado 1 · desregulación (100 − Seguridad y conexión)",p.desregulacion],
+    ["Regulación emocional",p.regulacion],["Pensamiento y atención",p.pensamiento],
+    ["Autocuidado",p.autocuidado],["Sueño y energía",p.sueno],
+    ["Vínculos",p.vinculos],["Vínculos · ansiedad",p.vinculos_ansiedad],["Vínculos · evitación",p.vinculos_evitacion],
+    ["Cuerpo",p.cuerpo]];
+  document.getElementById("resultados").innerHTML =
+    `<p>Índice de desregulación: <b>${p.indice}</b> · nivel ${p.nivel} (${p.nivel_nombre}). Estado fuera de la ventana con más tiempo: <b>${p.perfil}</b>.</p>` +
+    filas.map(([t,v])=>`<div class="fila"><span>${t}</span><span class="v">${v}</span><span class="b"><i style="width:${v}%"></i></span></div>`).join("") +
+    `<div class="fila"><span>Vínculos · seguridad (más alto = mejor)</span><span class="v">${p.vinculos_seguridad}</span><span class="b"><i style="width:${p.vinculos_seguridad}%;background:var(--bosque)"></i></span></div>
+     <p class="nota">Escala de 0 a 100. Salvo Vínculos · seguridad, un número más alto indica más desregulación. Índice = 0,5 × apartado 1 + 0,5 × media de los apartados 2 a 7. Niveles provisionales.</p>`;
+}
+
+document.getElementById("encuesta").addEventListener("submit",async ev=>{
+  ev.preventDefault();
+  const f = ev.target, err = document.getElementById("error");
+  const faltas = [];
+  const nombre = f.nombre.value.trim(), email = f.email.value.trim();
+  if (!nombre || !/^\S+@\S+\.\S+$/.test(email)) faltas.push(["Escribe tu nombre y un correo válido.", f.nombre]);
+  if (!f.consentimiento.checked) faltas.push(["Marca la casilla de consentimiento para poder enviar.", f.consentimiento]);
+  if (suma()!==100) faltas.push([`En el apartado 1, reparte el 100 % (te queda ${100-suma()} %).`, document.getElementById("ap1")]);
+  const r = respuestas();
+  const sinResp = Object.keys(r).filter(k=>r[k]===null);
+  sinResp.forEach(k=>document.getElementById("it-"+k).classList.add("falta"));
+  if (sinResp.length) faltas.push([`Faltan ${sinResp.length} ${sinResp.length===1?"frase":"frases"} por responder; están marcadas en otro color.`, document.getElementById("it-"+sinResp[0])]);
+  if (faltas.length){
+    err.textContent = faltas.map(x=>x[0]).join(" ");
+    err.hidden = false;
+    faltas[0][1].scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  err.hidden = true;
+  const p = puntuar(r);
+  const envio = {fecha:new Date().toISOString(),nombre,email,reparto:{...reparto},respuestas:r,puntuacion:p};
+  if (URL_HOJA){
+    const b = document.getElementById("btn-enviar");
+    b.disabled = true; b.textContent = "Enviando…";
+    try { await fetch(URL_HOJA,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({...envio, web: f.web ? f.web.value : ""})}); }
+    catch(e){ err.textContent = "No se han podido enviar las respuestas. Revisa tu conexión y vuelve a pulsar Enviar."; err.hidden=false; b.disabled=false; b.textContent="Enviar respuestas"; return; }
+  }
+  f.hidden = true;
+  document.querySelector(".progreso").hidden = true;
+  document.getElementById("gracias").hidden = false;
+  document.getElementById("p-indice").textContent = p.indice;
+  document.getElementById("p-nivel").textContent = `Nivel ${p.nivel} de 5: ${p.nivel_nombre}`;
+  document.getElementById("p-escala").innerHTML = [1,2,3,4,5].map(n=>`<span class="${n<=p.nivel?'on':''}"></span>`).join("");
+  if (MODO_PREVIA){ mostrarResultados(p); document.getElementById("previa").hidden = false; }
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+document.getElementById("btn-otra").addEventListener("click",()=>{
+  document.getElementById("encuesta").hidden = false;
+  document.querySelector(".progreso").hidden = false;
+  document.getElementById("gracias").hidden = true;
+  document.getElementById("previa").hidden = true;
+});
+
+pintarEstados();
+pintarApartados();
+progreso();
+</script>
+
+</body>
+</html>
