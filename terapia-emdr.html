@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terapia EMDR en Alella y online: también en embarazo y maternidad · Om</title>
+<meta name="description" content="Psicóloga y terapia EMDR en Alella y online para adultos, adolescentes, niños y parejas, también durante el embarazo y la maternidad. Procesar experiencias difíciles y recuperar el equilibrio del sistema nervioso.">
+<link rel="canonical" href="https://centro-om.com/terapia-emdr.html">
+<style>
+@font-face{font-family:"OM Titulos";src:local("Optima nova"),local("Optima"),local("Optima-Regular"),url(fonts/tenor-sans-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"OM Claim";src:url(fonts/poiret-one-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"OM Texto";src:url(fonts/jost-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"OM Texto";src:url(fonts/jost-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+
+/* Layout: bandas horizontales a todo el ancho que alternan marfil, beige y tierra; contenido en una columna de lectura con rejillas que se apilan en móvil. */
+:root{
+  --tierra:#7F6246; --tierra-osc:#6A513A; --marfil:#F2EEE8; --beige:#D6CBBF; --arena:#C8B9A5;
+  --bosque:#475045; --gris-verde:#909B99; --dorado:#BFA774;
+  --tinta:#3B342C; --tinta-suave:#5E554B; --linea:#D9CFC3;
+  --f-titulo:"OM Titulos", Optima, Candara, "Segoe UI", sans-serif;
+  --f-claim:"OM Claim", "Century Gothic", sans-serif;
+  --f-texto:"OM Texto", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --ancho:72rem; --lectura:40rem;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--marfil);color:var(--tinta);font:400 1.0625rem/1.65 var(--f-texto)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--marfil)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--dorado);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:400;line-height:1.15;text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--tierra)}
+h3{font-size:1.3rem;color:var(--bosque)}
+p{margin:0}
+.envoltura{max-width:var(--ancho);margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.banda{padding-block:clamp(4rem,9vw,7rem)}
+.etiqueta{font:500 .75rem/1 var(--f-texto);letter-spacing:.18em;text-transform:uppercase;color:var(--tierra)}
+.pila{display:grid;gap:1.25rem}
+.lectura{max-width:var(--lectura)}
+.suave{color:var(--tinta-suave)}
+
+/* Cabecera */
+.cabecera{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--marfil) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+.cabecera.con-borde{border-bottom-color:var(--linea)}
+.cabecera .envoltura{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+.marca{display:block;color:var(--tierra);width:3.1rem}
+.marca svg{display:block;width:100%;height:auto}
+.menu{display:flex;align-items:center;gap:1.75rem;font-size:.95rem}
+.menu a{text-decoration:none;color:var(--tinta-suave)}
+.menu a:hover{color:var(--tierra)}
+.boton{display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.35rem;border-radius:999px;text-decoration:none;font:500 .95rem/1 var(--f-texto);letter-spacing:.02em;transition:background .2s,color .2s}
+.boton svg{width:1.05rem;height:1.05rem;flex:none}
+.boton-tierra{background:var(--tierra);color:var(--marfil)}
+.boton-tierra:hover{background:var(--tierra-osc)}
+.boton-bosque{background:var(--bosque);color:var(--marfil)}
+.boton-bosque:hover{background:#3a4238}
+.boton-claro{background:var(--marfil);color:var(--tierra)}
+.boton-claro:hover{background:#fff}
+.boton-linea{border:1px solid currentColor;color:var(--marfil)}
+.boton-linea:hover{background:rgba(242,238,232,.12)}
+.menu .boton{color:var(--marfil)}
+@media (max-width:820px){.menu a:not(.boton){display:none}}
+
+/* Portada */
+.portada{position:relative;isolation:isolate;color:var(--marfil);background:var(--tierra) image-set(url(img/madera-900.webp) type("image/webp")) center/cover}
+@media (min-width:901px){.portada{background-image:image-set(url(img/madera-1920.webp) type("image/webp"))}}
+.portada::before{content:"";position:absolute;inset:0;z-index:-1;background:transparent}
+.portada[data-fondo="madera"]{background-image:image-set(url(img/madera-900.webp) type("image/webp"))}
+@media (min-width:901px){.portada[data-fondo="madera"]{background-image:image-set(url(img/madera-1920.webp) type("image/webp"))}}
+.portada[data-fondo="madera"]::before{background:linear-gradient(rgba(70,48,30,.52),rgba(70,48,30,.42))}
+.portada .envoltura{display:grid;justify-items:center;text-align:center;gap:2rem;padding-block:clamp(4.5rem,12vw,8.5rem)}
+.portada-logo{width:min(15.5rem,58vw);color:var(--marfil)}
+.portada-logo svg{width:100%;height:auto;display:block;overflow:visible}
+.portada-logo text{font-family:var(--f-claim);fill:currentColor}
+.portada h1{font-size:clamp(1.35rem,2.6vw,1.75rem);max-width:34rem;color:var(--marfil);opacity:.95}
+.portada-sub{margin-top:-1.25rem;font-size:1rem;letter-spacing:.04em;color:var(--marfil);opacity:.85}
+.acciones{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center}
+.aviso-apertura{font-size:.85rem;letter-spacing:.06em;color:var(--beige)}
+
+/* Para quién */
+.reconoce{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+.cuerpo-habla{background:var(--beige);border:1px solid var(--arena);border-radius:16px;padding:clamp(1.6rem,3vw,2.4rem);align-self:center}
+.cuerpo-habla h3{font-size:clamp(1.5rem,2.4vw,1.9rem);color:var(--bosque);margin:0 0 .8rem}
+.cuerpo-habla h3::before{content:"";display:block;width:2rem;height:2px;background:var(--dorado);margin-bottom:1rem}
+.cuerpo-habla p{margin:0;font-size:1.08rem;line-height:1.65;color:var(--tinta)}
+.senales{grid-column:1/-1;list-style:none;margin:clamp(-2rem,-2vw,-.5rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(1.5rem,4vw,3rem);row-gap:1.6rem}
+.senales li{padding-top:.2rem}
+.senales h3{display:inline-block;font-size:1.02rem;line-height:1.2;color:var(--bosque);background:rgba(144,155,153,.28);border-radius:999px;padding:.5rem 1rem .45rem;margin:0 0 .7rem}
+.senales p{margin:0;padding-left:.2rem;font-size:.94rem;line-height:1.55;color:var(--tinta-suave)}
+@media (max-width:820px){.senales{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.senales{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:820px){.reconoce{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Por qué vuelve */
+.porque{position:relative;isolation:isolate;color:var(--marfil);background:var(--bosque) center/cover no-repeat;background-image:image-set(url(img/hoja-900.webp) type("image/webp"))}
+.porque::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(34,40,32,.62),rgba(34,40,32,.45))}
+.porque h2{color:var(--marfil)}
+.porque .etiqueta{color:var(--dorado)}
+.porque .suave{color:rgba(242,238,232,.88)}
+.porque .cierre p{color:var(--marfil)}
+.porque .enlace-mas{color:var(--marfil)}
+.porque .nota{color:rgba(242,238,232,.75)}
+.porque .cadena li{background:rgba(250,247,242,.94);border-color:transparent;color:var(--tinta)}
+.porque .cadena li:last-child{background:var(--beige)}
+.porque .cadena li:not(:last-child)::after{background:var(--marfil)}
+.porque .cadena h3{color:var(--bosque)}
+@media (min-width:901px){.porque{background-image:image-set(url(img/hoja-1920.webp) type("image/webp"))}}
+.cadena{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;counter-reset:eslabon}
+.cadena li{counter-increment:eslabon;position:relative;background:#FAF7F2;border:1px solid var(--linea);border-radius:14px;padding:1.25rem 1.2rem 1.3rem}
+.cadena li:not(:last-child)::after{content:"";position:absolute;right:-.85rem;top:50%;width:.7rem;height:1px;background:var(--dorado)}
+.cadena li::before{content:counter(eslabon);display:block;font:400 1.6rem/1 var(--f-titulo);color:var(--dorado);margin-bottom:.6rem}
+.cadena h3{font-size:1.1rem;margin:0 0 .35rem}
+.cadena p{margin:0;font-size:.95rem;line-height:1.55;color:var(--tinta-suave)}
+.cadena li:last-child{background:var(--beige);border-color:var(--arena)}
+.porque .cierre{margin-top:2.25rem;display:grid;gap:1rem}
+.enlace-mas{color:var(--bosque);font-weight:500;text-underline-offset:.25em}
+.nota{font-size:.9rem;color:var(--tinta-suave)}
+@media (max-width:820px){.cadena{grid-template-columns:minmax(0,1fr)}.cadena li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-.75rem;width:1px;height:.6rem}}
+
+/* Qué es regular */
+.regular{background:var(--beige)}
+.regular .envoltura{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.estados{display:grid;gap:.75rem}
+.estado{background:var(--marfil);border-radius:14px;padding:1.1rem 1.25rem;display:grid;gap:.25rem}
+.estado strong{font:400 1.1rem/1.3 var(--f-titulo);color:var(--bosque)}
+.estado span{font-size:.95rem;color:var(--tinta-suave)}
+.estado.eje{background:var(--bosque);color:var(--marfil)}
+.estado.eje strong{color:var(--marfil)}
+.estado.eje span{color:#DDE3DA}
+@media (max-width:820px){.regular .envoltura{grid-template-columns:minmax(0,1fr)}}
+
+/* Proceso */
+.pasos{list-style:none;margin:4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2rem;position:relative}
+.pasos .sendero{position:absolute;left:0;right:0;top:0;width:100%;height:6.5rem;pointer-events:none;overflow:visible}
+.pasos .sendero path{fill:none;stroke:var(--dorado);stroke-width:1.5;stroke-dasharray:2 7;stroke-linecap:round}
+.pasos li{display:grid;gap:.55rem;align-content:start;justify-items:center;text-align:center;position:relative;z-index:1}
+.pasos li:nth-of-type(even){margin-top:2.25rem}
+.paso-icono{width:4.25rem;height:4.25rem;border-radius:50%;background:var(--c);color:var(--marfil);display:grid;place-items:center;position:relative;margin-bottom:.6rem;transition:transform .4s ease}
+.paso-icono svg{width:2.6rem;height:2.6rem}
+.paso-num{position:absolute;top:-.35rem;right:-.45rem;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--marfil);border:1px solid var(--dorado);color:var(--tierra);font:400 .82rem/1.4rem var(--f-titulo);text-align:center}
+.pasos li:nth-of-type(1){--c:var(--tierra)}
+.pasos li:nth-of-type(2){--c:var(--dorado)}
+.pasos li:nth-of-type(3){--c:var(--arena)}
+.pasos li:nth-of-type(3) .paso-icono{color:var(--tierra)}
+.pasos li:nth-of-type(4){--c:var(--gris-verde)}
+.pasos li:nth-of-type(5){--c:var(--bosque)}
+.pasos li:hover .paso-icono{transform:scale(1.08)}
+.pasos h3{font-size:1.2rem}
+.pasos p{font-size:.95rem;color:var(--tinta-suave);max-width:17rem}
+.pasos .dato{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tierra);border:1px solid var(--arena);border-radius:999px;padding:.3rem .75rem .25rem;margin-bottom:.1rem;white-space:nowrap}
+@media (max-width:1150px) and (min-width:901px){.pasos .dato{font-size:.64rem;letter-spacing:.04em;padding:.3rem .55rem .25rem}}
+@media (max-width:900px){
+.pasos{grid-template-columns:minmax(0,1fr);gap:2rem;padding-left:0}
+.pasos .sendero{display:none}
+.pasos::before{content:"";position:absolute;left:2.1rem;top:2rem;bottom:2rem;border-left:1.5px dashed var(--dorado);opacity:.8}
+.pasos li,.pasos li:nth-of-type(even){margin-top:0;grid-template-columns:4.25rem minmax(0,1fr);column-gap:1.25rem;justify-items:start;text-align:left}
+.pasos li>*{grid-column:2}
+.pasos li .paso-icono{grid-column:1;grid-row:1/span 3;margin:0}
+}
+@media (prefers-reduced-motion:reduce){.pasos li:hover .paso-icono{transform:none}}
+.destino{display:grid;justify-items:center;text-align:center;gap:.6rem;margin-top:-.5rem}
+.destino::before{content:"";height:1.5rem;border-left:1.5px dashed var(--dorado);opacity:.8}
+.destino .anillo{width:2.75rem;height:2.75rem;border-radius:50%;border:6px solid #BAC4B8}
+.destino p{max-width:30rem;font:italic 400 1.08rem/1.5 var(--f-titulo);color:var(--tierra)}
+.destino strong{display:block;font:normal 500 .74rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+@media (max-width:900px){.destino{justify-items:start;text-align:left;margin-top:0;padding-left:.5rem}.destino::before{margin-left:1.35rem}}
+
+/* Servicios */
+.servicios{background:var(--bosque);color:var(--marfil)}
+.servicios h2{color:var(--marfil)}
+.servicios .etiqueta{color:var(--dorado)}
+.servicios .suave{color:#DDE3DA}
+.rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:3rem;background:rgba(242,238,232,.18);border:1px solid rgba(242,238,232,.18)}
+.servicio{background:var(--bosque);padding:1.75rem;display:grid;gap:.6rem;align-content:start}
+.servicio h3{color:var(--marfil)}
+.servicio p{font-size:.97rem;color:#DDE3DA}
+.servicio .para{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dorado)}
+.servicio.ancho{grid-column:span 2}
+@media (min-width:601px){.rejilla.dos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.programa{grid-column:1/-1;background:var(--tierra);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center}
+.programa h3{font-size:1.6rem}
+@media (max-width:900px){.rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.rejilla{grid-template-columns:minmax(0,1fr)}.servicio.ancho{grid-column:auto}.programa{grid-template-columns:minmax(0,1fr)}}
+
+/* Cómo somos */
+.valores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem 3rem;margin-top:3rem}
+.valor{display:grid;gap:.5rem;align-content:start}
+.valor h3{color:var(--bosque)}
+.valor p{color:var(--tinta-suave);font-size:.98rem}
+@media (max-width:820px){.valores{grid-template-columns:minmax(0,1fr)}}
+.somos{display:grid;gap:3rem}
+.somos-banda{padding-top:0}
+.somos-foto.zocalo{width:100%;height:clamp(5.5rem,10vw,8.5rem);object-fit:cover;object-position:50% 25%;display:block;margin-bottom:clamp(3rem,7vw,5rem)}
+.somos .valores{grid-template-columns:repeat(3,minmax(0,1fr))}
+.somos .valor.ancho{grid-column:span 2}
+@media (max-width:900px){.somos .valores{grid-template-columns:repeat(2,minmax(0,1fr))}.somos .valor.ancho{grid-column:1/-1}}
+@media (max-width:600px){.somos .valores{grid-template-columns:minmax(0,1fr)}}
+
+/* Sobre mí y espacio */
+.dos{background:var(--beige)}
+.par{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.par>*{align-content:start}
+.hueco-foto{aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 14px 14px;background:var(--arena);display:grid;place-items:center;color:var(--tierra);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:1rem}
+.equipo-entrada{font:400 clamp(1.15rem,1.6vw,1.35rem)/1.55 var(--f-titulo);color:var(--tinta)}
+.fundadora{font-size:.95rem;letter-spacing:.02em;color:var(--tinta-suave)}
+.fundadora a{color:var(--tierra);text-underline-offset:.2em}
+.foto-equipo{width:100%;max-width:22rem;height:auto;aspect-ratio:9/19;padding:0;object-fit:cover;object-position:50% 50%;display:block;border-radius:999px;justify-self:center;margin-inline:auto}
+@media (max-width:820px){.hueco-foto.foto-equipo{aspect-ratio:9/19;max-width:13rem;border-radius:999px}}
+.cita{font:italic 400 1.35rem/1.45 var(--f-titulo);color:var(--bosque);border-left:2px solid var(--dorado);padding-left:1.25rem}
+@media (max-width:820px){.par{grid-template-columns:minmax(0,1fr)}.hueco-foto{aspect-ratio:3/2;border-radius:14px}}
+.espacio{background:var(--arena);padding-top:0}
+.espacio-foto{margin:0 0 clamp(3rem,7vw,5rem);position:relative}
+.espacio-foto img{width:100%;height:clamp(16rem,38vw,34rem);object-fit:cover;object-position:50% 55%;display:block}
+.espacio-foto figcaption{position:absolute;right:max(20px,2vw);bottom:.8rem;font-size:.75rem;letter-spacing:.04em;color:rgba(242,238,232,.85)}
+.espacio-texto{align-self:end}
+.espacio-texto p{font:400 clamp(1.05rem,1.4vw,1.2rem)/1.6 var(--f-titulo);color:var(--tinta)}
+
+/* Contacto */
+.contacto{background:var(--tierra);color:var(--marfil);text-align:center}
+.contacto{position:relative;isolation:isolate;background:var(--tierra) center/cover no-repeat;background-image:image-set(url(img/rojiza-900.webp) type("image/webp"))}
+.contacto::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(80,58,40,.35)}
+@media (min-width:901px){.contacto{background-image:image-set(url(img/rojiza-1920.webp) type("image/webp"))}}
+.contacto .envoltura{display:grid;justify-items:center;gap:1.5rem}
+.contacto h2{color:var(--marfil)}
+.contacto p{max-width:34rem;color:var(--beige)}
+.datos{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 2rem;font-size:.95rem;color:var(--marfil)}
+
+/* Pie */
+.pie{background:var(--bosque);color:#DDE3DA;font-size:.85rem}
+.pie .envoltura{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;padding-block:2rem}
+.pie .marca{color:var(--dorado);width:3rem}
+.pie nav{display:flex;flex-wrap:wrap;gap:1.25rem}
+.pie a{text-decoration:none}
+.pie a:hover{color:var(--marfil)}
+
+/* WhatsApp flotante en móvil */
+.wa-flotante{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;width:3.4rem;height:3.4rem;border-radius:50%;background:var(--bosque);color:var(--marfil);display:none;place-items:center;box-shadow:0 6px 20px rgba(59,52,44,.25)}
+.wa-flotante svg{width:1.6rem;height:1.6rem}
+@media (max-width:820px){.wa-flotante{display:grid}}
+.preguntas{max-width:46rem;margin-top:2rem}
+.pregunta{border-top:1px solid var(--linea)}
+.pregunta:last-child{border-bottom:1px solid var(--linea)}
+.pregunta summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;font-weight:500;color:var(--tinta)}
+.pregunta summary::-webkit-details-marker{display:none}
+.pregunta summary::after{content:"+";color:var(--tierra);font-size:1.3rem;line-height:1}
+.pregunta[open] summary::after{content:"–"}
+.pregunta p{margin:0 0 1.2rem;color:var(--tinta-suave);max-width:40rem}
+
+.portada[data-fondo="agua"]{background-image:url(img/agua-900.webp)}
+@media (min-width:901px){.portada[data-fondo="agua"]{background-image:url(img/agua-1920.webp)}}
+.portada[data-fondo="ventana"]{background-image:url(img/ventana-900.webp)}
+@media (min-width:901px){.portada[data-fondo="ventana"]{background-image:url(img/ventana-1920.webp)}}
+.portada[data-fondo]::before{background:linear-gradient(rgba(70,48,30,.55),rgba(70,48,30,.45))}
+.portada .etiqueta{color:var(--beige)}
+.portada h1.grande{font-size:clamp(2.1rem,4.6vw,3.3rem);max-width:40rem;opacity:1}
+.portada .entrada{max-width:36rem;color:var(--marfil);opacity:.92;font-size:1.1rem}
+.tarjetas{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.tarjetas li{background:#FAF7F2;border:1px solid var(--linea);border-radius:14px;padding:1.3rem 1.3rem 1.4rem}
+.tarjetas h3{font-size:1.15rem;margin:0 0 .35rem}
+.tarjetas h3::before{content:"";display:block;width:1.6rem;height:2px;background:var(--dorado);margin-bottom:.8rem}
+.tarjetas p{font-size:.97rem;line-height:1.55;color:var(--tinta-suave)}
+@media (max-width:900px){.tarjetas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tarjetas{grid-template-columns:minmax(0,1fr)}}
+.columnas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+@media (max-width:820px){.columnas{grid-template-columns:minmax(0,1fr)}}
+.cambios{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.cambios li{background:var(--marfil);border-radius:14px;padding:1rem 1.25rem;color:var(--tinta)}
+.fases{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:1.5rem;counter-reset:fase}
+.fases li{counter-increment:fase;display:grid;gap:.5rem;align-content:start;padding-top:1.25rem;border-top:1px solid var(--tierra)}
+.fases li::before{content:counter(fase);font:400 2rem/1 var(--f-titulo);color:var(--dorado)}
+.fases h3{font-size:1.15rem}
+.fases p{font-size:.97rem;color:var(--tinta-suave)}
+.fases .dato{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tierra)}
+@media (max-width:820px){.fases{grid-template-columns:minmax(0,1fr)}}
+.dos-recuadros{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:3rem}
+.dos-recuadros .recuadro{max-width:none;align-content:start}
+@media (max-width:820px){.dos-recuadros{grid-template-columns:minmax(0,1fr)}}
+.recuadro{background:var(--beige);border-radius:14px;padding:clamp(1.5rem,4vw,2.25rem);display:grid;gap:.8rem;max-width:46rem}
+.recuadro h3{font-size:1.35rem}
+.firma-prof{display:grid;gap:.4rem;max-width:46rem;border-left:2px solid var(--dorado);padding-left:1.25rem}
+.firma-prof a{color:var(--bosque);font-weight:500;text-underline-offset:.25em}
+.preguntas{max-width:46rem;margin-top:2rem}
+.pregunta{border-top:1px solid var(--linea)}
+.pregunta:last-child{border-bottom:1px solid var(--linea)}
+.pregunta summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;font-weight:500;color:var(--tinta)}
+.pregunta summary::-webkit-details-marker{display:none}
+.pregunta summary::after{content:"+";color:var(--tierra);font-size:1.3rem;line-height:1}
+.pregunta[open] summary::after{content:"–"}
+.pregunta p{margin:0 0 1.2rem;color:var(--tinta-suave);max-width:40rem}
+.porque[data-textura="sauce"]{background-image:url(img/sauce-900.webp)}
+@media (min-width:901px){.porque[data-textura="sauce"]{background-image:url(img/sauce-1920.webp)}}
+.porque .tarjetas li{background:rgba(250,247,242,.94);border-color:transparent}
+.propuesta{background:var(--dorado);color:var(--tinta);font-size:.85rem;text-align:center;padding:.5rem 16px}
+.propuesta a{margin:0 .5rem;font-weight:500}
+.propuesta a[aria-current]{text-decoration:none;border-bottom:2px solid var(--tinta)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="om" viewBox="0 0 535.5 199.1"><path fill="currentColor" fill-rule="evenodd" d="m 336.71021,97.488063 c 1.2495,-3.926999 2.98095,-8.639399 5.4978,-14.619148 7.4256,-17.617947 19.7778,-33.772194 36.057,-43.696792 13.04834,-7.961099 29.18474,-11.156248 44.01809,-8.121749 30.13079,6.158249 42.05459,33.986394 47.33819,61.29689 3.1773,16.386296 5.4978,28.167296 6.9615,35.342996 1.23165,6.01545 2.9631,12.7092 5.19435,20.08124 4.2483,14.0301 10.4958,26.04315 21.29505,36.00345 9.19274,8.4609 19.99199,11.87025 32.43344,10.22805 v 3.48075 c -4.94445,0.5355 -10.29945,0.7854 -16.065,0.7854 -18.61754,-0.0179 -37.02089,-7.19355 -51.24734,-18.93885 -17.04675,-14.08365 -23.86544,-35.50364 -28.02449,-56.60234 -3.23085,-16.3863 -5.55135,-30.452096 -9.0321,-44.392944 -2.6775,-10.781398 -6.7116,-20.348996 -14.58345,-27.703195 -3.83775,-3.58785 -8.4252,-6.247499 -13.61955,-7.318499 -12.51285,-2.5704 -24.06179,2.2491 -33.48659,10.460098 -15.72585,13.690948 -26.0253,33.718645 -30.18435,53.96054 -0.6069,2.9274 -0.6783,6.30105 -0.3927,9.6033 1.76715,20.58105 6.94365,42.71504 19.86705,59.29769 6.44385,8.2824 16.065,15.40455 26.4537,16.76115 4.80164,0.62475 9.60329,0.4284 14.42279,-0.6069 v 3.5343 c -10.37085,2.7489 -20.95589,2.69535 -31.71944,-0.12495 -24.9543,-6.55095 -43.76819,-25.29345 -52.51469,-49.42665 -2.9631,-8.17529 -5.30145,-17.02889 -6.9972,-26.54294 -2.98095,-16.6719 -5.1051,-28.220846 -6.37245,-34.646845 -2.87385,-14.512048 -8.6394,-32.790445 -22.33035,-40.537343 -4.9266,-2.7846 -10.3173,-4.19475 -16.15424,-4.19475 -17.0646,-0.01785 -31.39815,11.602498 -40.5195,25.061396 -2.12415,3.1416 -4.7838,7.925399 -7.94325,14.369248 0.76755,4.266149 1.7136,8.353798 1.8921,12.494998 0.2856,6.836549 0.37485,14.476346 -0.8925,21.723446 -3.0702,17.36805 -10.17449,32.59409 -21.31289,45.67814 -17.9928,21.1344 -42.9471,34.57545 -70.45394,38.14545 -8.72865,1.1424 -18.5283,0.7854 -27.881696,0.33915 -5.194349,-0.2499 -9.531899,-1.1067 -15.226048,-2.37405 C 53.198711,189.98675 27.816015,173.8325 12.822018,149.21735 5.2357691,136.79376 0.07711999,121.29996 0.00572,106.28811 -0.02997999,98.719713 0.05926999,92.133064 1.5229697,85.010915 11.108418,38.565223 54.109061,6.3459782 99.483753,0.65182917 103.87485,0.09847926 109.05135,-0.0978707 115.01325,0.04492927 153.26579,1.0445291 188.41244,23.089275 206.20889,56.73652 c 2.65964,5.033699 4.31969,9.763948 7.17569,16.564797 4.83735,-8.978549 10.3173,-16.529097 16.4934,-22.955096 23.43705,-24.365246 64.24214,-29.773795 87.78629,-1.80285 3.37365,3.998399 6.51525,9.049949 9.40695,15.118948 4.90874,10.299448 7.49699,22.758746 9.62114,33.825744 z M 163.33319,169.6913 C 204.03119,123.78111 189.14429,46.365671 139.03935,13.842977 109.9974,-5.0066199 78.634957,6.3816782 57.00076,29.961524 47.111862,40.742922 39.954013,53.04157 35.545064,66.857468 22.710916,107.07351 33.885014,155.3756 69.103058,181.0439 c 8.210999,5.97975 17.671497,10.12095 28.417196,12.44145 2.623946,0.5712 5.890496,0.87465 9.817496,0.91035 4.76595,0.0536 8.05035,0 9.83535,-0.16065 5.47995,-0.4998 10.97775,-1.8207 16.4934,-3.9627 11.65605,-4.5339 21.54494,-11.40615 29.68454,-20.58105 z"/></symbol>
+  <symbol id="om-mono" viewBox="0 0 1408 1281"><path fill="currentColor" fill-rule="evenodd" d="M674.0 1275.9C519.3 1269.2 378.4 1219.4 253.0 1127.1C171.6 1067.2 97.4 982.2 58.4 904.0C48.8 884.8 37.2 858.0 30.5 839.6C-1.9 749.9 -4.6 629.9 23.6 521.2C34.9 477.3 47.1 445.1 69.5 399.5C138.9 258.5 281.2 127.2 435.4 62.0C486.7 40.4 529.9 27.0 581.0 17.1C672.9 -0.7 772.1 0.2 857.5 19.6C921.8 34.2 989.1 60.7 1040.5 91.5C1088.1 120.0 1124.4 146.9 1165.0 183.6C1198.7 214.0 1247.4 268.1 1272.4 302.8C1296.5 336.3 1329.7 392.5 1345.4 426.6C1393.8 531.3 1412.6 639.6 1400.0 740.0C1389.3 824.1 1355.1 907.5 1300.0 983.5C1257.9 1041.4 1189.4 1106.0 1124.9 1148.6C1061.0 1190.6 1005.5 1217.4 932.0 1241.5C891.0 1254.9 821.3 1269.3 776.5 1273.5C743.9 1276.5 708.1 1277.4 674.0 1275.9ZM769.0 1242.9C784.6 1241.5 812.6 1236.7 829.1 1232.6C853.4 1226.5 898.3 1209.1 918.9 1197.8C937.9 1187.3 987.0 1153.2 987.0 1150.4C987.0 1148.5 986.0 1148.6 966.3 1151.5C937.5 1155.7 928.1 1156.3 905.1 1155.7C849.6 1154.2 800.1 1141.6 749.6 1116.3C720.8 1101.9 682.8 1075.1 660.9 1053.9C642.7 1036.2 609.2 992.0 597.3 970.0C591.1 958.6 578.4 930.2 574.6 919.2C567.1 897.7 555.4 851.9 548.5 817.5C544.2 795.5 542.2 784.0 529.1 704.0C518.4 639.1 515.3 625.5 504.8 597.0C486.0 546.2 457.1 515.9 417.5 505.3C404.8 502.0 378.8 501.5 365.7 504.4C300.4 518.8 238.0 588.3 220.6 666.2C215.9 687.1 215.5 691.4 215.5 719.5C215.5 808.7 242.9 902.5 293.3 986.2C304.0 1004.0 331.2 1041.3 350.4 1064.5C362.4 1079.0 398.1 1114.8 414.1 1128.3C490.9 1193.1 573.7 1230.8 663.8 1242.0C686.9 1244.9 741.5 1245.4 769.0 1242.9ZM953.6 1131.9C968.3 1130.5 986.8 1126.7 997.6 1122.9C1029.7 1111.6 1063.3 1088.8 1084.9 1063.6C1093.3 1053.8 1116.0 1024.2 1116.0 1023.1C1116.0 1022.7 1113.4 1020.2 1110.2 1017.4C1067.4 980.7 1042.7 945.6 1028.0 901.0C1014.2 859.1 1009.6 838.1 991.0 731.0C975.6 642.7 972.4 628.4 961.9 600.2C947.2 560.8 928.1 535.3 901.9 519.7C877.6 505.4 844.3 502.7 815.1 512.6C804.3 516.3 783.7 527.0 773.3 534.3C755.5 546.8 727.1 577.7 711.4 601.5C686.9 638.9 671.3 678.1 664.1 720.6C655.4 772.4 661.5 845.3 680.0 910.9C701.7 987.5 752.2 1057.0 815.2 1096.6C858.6 1123.8 907.8 1136.4 953.6 1131.9ZM1171.0 917.8C1180.7 892.7 1184.0 881.8 1190.5 853.0C1213.5 750.5 1208.8 635.9 1176.4 510.0C1160.6 448.7 1145.2 408.0 1114.4 347.0C1065.8 250.5 998.4 167.7 920.5 108.9C872.4 72.6 814.5 45.7 764.5 36.6C743.9 32.8 730.3 31.7 704.0 31.6C621.4 31.6 533.5 63.9 454.6 123.3C430.1 141.7 421.9 148.9 395.4 175.4C351.3 219.5 333.4 242.1 300.6 294.9C273.6 338.2 255.7 376.4 238.5 427.0C219.2 483.9 207.2 553.7 207.0 609.8C207.0 619.1 207.8 621.0 209.8 616.6C212.1 611.5 230.6 581.0 237.8 570.5C268.1 526.0 306.3 492.8 353.5 470.0C395.4 449.7 449.2 441.3 487.1 449.0C500.0 451.7 517.0 457.1 527.7 462.1C541.0 468.2 562.7 483.1 574.9 494.5C590.2 508.7 614.9 545.2 623.0 565.3C626.5 574.0 636.3 608.9 643.6 638.2C646.3 649.1 648.7 658.0 649.0 658.0C649.3 658.0 652.6 651.3 656.4 643.2C691.7 567.6 739.0 512.5 799.5 476.4C816.9 466.0 847.7 454.7 873.0 449.2C890.4 445.5 927.7 445.2 946.0 448.7C994.9 458.1 1035.2 484.2 1067.0 527.1C1086.7 553.7 1098.3 577.7 1108.5 613.4C1117.6 645.3 1120.1 660.3 1133.0 763.5C1146.2 868.8 1148.1 880.3 1155.6 904.0C1163.5 928.8 1165.9 931.0 1171.0 917.8Z"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+</svg>
+<header class="cabecera" id="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="https://centro-om.com/" aria-label="Om, inicio"><svg aria-hidden="true" viewBox="0 0 1408 1281"><use href="#om-mono"/></svg></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="https://centro-om.com/#como-trabajamos">Cómo trabajamos</a>
+      <a href="https://centro-om.com/#servicios">El método</a>
+      <a href="https://centro-om.com/#equipo">Equipo</a>
+      <a href="https://centro-om.com/#contacto">Contacto</a>
+      <a class="boton boton-bosque" href="https://wa.me/34613032874?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20la%20charla%20de%2015%20minutos." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Escríbenos</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="portada" data-fondo="agua" aria-labelledby="t1">
+    <div class="envoltura">
+      <p class="etiqueta">Psicoterapia</p>
+      <h1 id="t1" class="grande">Terapia EMDR en Alella y online</h1>
+      <p class="entrada">Para comprender lo que te pasa, integrarlo y recuperar tu bienestar. El EMDR es una psicoterapia recomendada por la Organización Mundial de la Salud para el tratamiento del estrés postraumático.</p>
+      <div class="acciones"><a class="boton boton-claro" href="#contacto">Pide una charla de 15 minutos</a></div>
+    </div>
+  </section>
+
+  <section class="banda" aria-labelledby="t-que">
+    <div class="envoltura columnas">
+      <div class="pila">
+        <p class="etiqueta">Qué es el EMDR</p>
+        <h2 id="t-que">Cuando el pasado sigue presente</h2>
+      </div>
+      <div class="pila">
+        <p>El EMDR es un modelo de psicoterapia que ayuda a procesar experiencias difíciles que han quedado sin integrar y siguen influyendo en tu vida, aunque no seas consciente de ellas.</p>
+        <p>Permite trabajar recuerdos, emociones y sensaciones corporales de forma segura. El objetivo es que el pasado deje de interferir en el presente.</p>
+        <p class="suave">A veces, aunque hayas hecho terapia y entendido muchas cosas, el malestar se repite. Suele ocurrir cuando una experiencia no se ha procesado de forma adecuada: el cerebro la sigue usando para anticipar el presente, y el cuerpo responde con las mismas emociones y sensaciones de entonces. El EMDR ayuda a actualizar esos recuerdos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda porque" aria-labelledby="t-para">
+    <div class="envoltura">
+      <div class="pila lectura">
+        <p class="etiqueta">Para quién es</p>
+        <h2 id="t-para">Puede ayudarte si</h2>
+        <p class="suave">Acompañamos a adultos, adolescentes, niños y parejas.</p>
+      </div>
+      <ul class="tarjetas">
+        <li><h3>Has vivido experiencias difíciles</h3><p>Situaciones traumáticas o experiencias generadoras de malestar repetidas en el tiempo, como la soledad, las críticas, la exigencia o la impotencia.</p></li>
+        <li><h3>Vives en alerta</h3><p>Ansiedad, crisis de pánico, mente acelerada o sensación de no poder parar.</p></li>
+        <li><h3>El malestar se repite</h3><p>Has hecho terapia y entiendes lo que te pasa, pero sigues reaccionando igual.</p></li>
+        <li><h3>Tus relaciones te desgastan</h3><p>Te cuesta poner límites, te exiges demasiado o repites vínculos que te hacen daño.</p></li>
+        <li><h3>Tu cuerpo lo expresa</h3><p>Convives con una enfermedad crónica o con malestares físicos que, aun estando tratados médicamente, persisten.</p></li>
+        <li><h3>Quieres ser madre o ya lo eres</h3><p>Deseas prepararte para la maternidad desde un sistema nervioso más regulado, o atraviesas el embarazo, el posparto o la crianza.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="banda regular" aria-labelledby="t-cambia">
+    <div class="envoltura">
+      <div class="pila">
+        <p class="etiqueta">Qué cambia</p>
+        <h2 id="t-cambia">Lo vivido sigue ahí, pero deja de doler igual</h2>
+        <p class="lectura">El procesamiento no borra los recuerdos: cambia la forma en que el cuerpo y la mente responden a ellos.</p>
+      </div>
+      <ul class="cambios">
+        <li>Menos reacciones de lucha, huida o bloqueo ante situaciones que no lo requieren, y más sensación de seguridad</li>
+        <li>Una ventana de tolerancia más amplia: más margen para sostener lo que sientes sin desbordarte ni desconectarte</li>
+        <li>Los recuerdos dolorosos pierden intensidad</li>
+        <li>Las creencias negativas sobre ti cambian como resultado del procesamiento</li>
+        <li>Menos ansiedad y respuestas automáticas; más claridad para decidir y poner límites</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="banda" aria-labelledby="t-como">
+    <div class="envoltura">
+      <div class="pila lectura">
+        <p class="etiqueta">Cómo trabajamos</p>
+        <h2 id="t-como">Un proceso por fases, a tu ritmo</h2>
+        <p class="suave">Las sesiones son presenciales en Alella u online.</p>
+      </div>
+      <ol class="fases" style="--n:4">
+        <li><h3>Charla inicial</h3><p>Quince minutos, sin coste. Nos cuentas qué te pasa y valoramos juntos/as si el EMDR es adecuado para ti.</p></li>
+        <li><h3>Comprender</h3><p>Exploramos tu historia y cómo ciertas experiencias siguen influyendo en tu presente.</p></li>
+        <li><h3>Seguridad y regulación</h3><p>Construimos recursos para que tu sistema nervioso tenga margen antes de abordar lo difícil.</p></li>
+        <li><h3>Reprocesamiento</h3><p>Cuando estás preparado/a, trabajamos los recuerdos que mantienen el malestar.</p></li>
+      </ol>
+      <p style="margin-top:2rem"><a class="boton boton-tierra" href="#contacto">Pide una charla de 15 minutos</a></p>
+      <div class="dos-recuadros">
+      <div class="recuadro">
+        <h3>Cuando hay una enfermedad crónica</h3>
+        <p>El estrés sostenido mantiene activadas las respuestas de defensa del organismo, lo que favorece la inflamación de bajo grado y el estrés oxidativo. En el proceso trabajamos para reducir esa activación y que tu sistema nervioso recupere el equilibrio, en coordinación con tu tratamiento médico, que este trabajo complementa y no sustituye.</p>
+        <p><a class="enlace-mas" href="https://centro-om.com/por-que-regularse.html">Por qué regularse: lo que dice la investigación</a></p>
+      </div>
+      <div class="recuadro">
+        <h3>Embarazo y maternidad</h3>
+        <p>Si quieres ser madre, podemos trabajar para que llegues a esa etapa con más recursos y un sistema nervioso más regulado. Si estás embarazada, en el posparto o criando, lo tenemos en cuenta en el proceso: el cansancio, la culpa, el vínculo con tu bebé y lo que de tu propia infancia se activa al criar.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda" aria-labelledby="t-faq">
+    <div class="envoltura">
+      <div class="pila lectura">
+        <p class="etiqueta">Preguntas frecuentes</p>
+        <h2 id="t-faq">Lo que suelen preguntarnos</h2>
+      </div>
+      <div class="preguntas">
+        <details class="pregunta"><summary>¿Funciona online?</summary><p>Sí. Las sesiones online siguen el mismo protocolo que en consulta, y los estudios disponibles muestran una eficacia similar.</p></details>
+        <details class="pregunta"><summary>¿Se puede hacer EMDR durante el embarazo?</summary><p>Sí. Los estudios con embarazadas indican que es una terapia segura en esta etapa y que ayuda, por ejemplo, ante el miedo al parto. Además, reducir el estrés durante el embarazo también beneficia al bebé, ya que el estrés prenatal sostenido se asocia con efectos en su desarrollo. Adaptamos el ritmo del proceso a cada momento del embarazo.</p></details>
+        <details class="pregunta"><summary>¿Cuánto dura el proceso?</summary><p>Depende de cada persona y de lo que se trabaje. En la valoración inicial te damos una orientación y revisamos juntos/as cómo vas avanzando.</p></details>
+        <details class="pregunta"><summary>¿Puede combinarse con otros tratamientos?</summary><p>Sí. Dentro del método Om, el EMDR puede integrarse con trabajo somático, medicina integrativa y hábitos reguladores. Complementa tu tratamiento médico, no lo sustituye.</p></details>
+      </div>
+      <div class="firma-prof" style="margin-top:3rem">
+        <p class="etiqueta">Quién te acompaña</p>
+        <p><a href="https://rociovilches.com/">Rocío Vilches</a>, psicóloga sanitaria, colegiada 34041, y terapeuta EMDR de adultos e infantojuvenil acreditada por la Asociación EMDR España.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda contacto" id="contacto" aria-labelledby="t-contacto">
+    <div class="envoltura">
+      <h2 id="t-contacto">Empecemos por conocernos</h2>
+      <p>Una charla de 15 minutos, sin coste, para que nos cuentes qué te pasa y veamos juntos/as si este acompañamiento es adecuado para ti.</p>
+      <a class="boton boton-claro" href="https://wa.me/34613032874?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20la%20charla%20de%2015%20minutos." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Pide una charla de 15 minutos</a>
+    </div>
+  </section>
+</main>
+<footer class="pie">
+  <div class="envoltura">
+    <span class="marca" aria-hidden="true"><svg viewBox="0 0 535.5 199.1"><use href="#om"/></svg></span>
+    <span>© 2026 Om · Centro integrativo de regulación del sistema nervioso</span>
+    <nav aria-label="Legal"><a href="https://centro-om.com/aviso-legal.html">Aviso legal</a><a href="https://centro-om.com/privacidad.html">Privacidad</a><span>Esta web no usa cookies</span></nav>
+  </div>
+</footer>
+<a class="wa-flotante" href="https://wa.me/34613032874?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20la%20charla%20de%2015%20minutos." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+<script>
+(function(){var c=document.getElementById('cabecera');function f(){c.classList.toggle('con-borde',window.scrollY>8)}window.addEventListener('scroll',f,{passive:true});f();})();
+</script>
+</body>
+</html>
