@@ -217,7 +217,10 @@ p{margin:0}
 .hueco-foto{aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 14px 14px;background:var(--arena);display:grid;place-items:center;color:var(--tierra);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:1rem}
 .equipo-entrada{font:400 clamp(1.15rem,1.6vw,1.35rem)/1.55 var(--f-titulo);color:var(--tinta)}
 .equipo-lista{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:0}
-.equipo-lista li{border-top:1px solid color-mix(in srgb,var(--tierra) 25%,transparent);padding:.9rem 0;display:flex;flex-direction:column;gap:.15rem}
+.equipo-lista li{border-top:1px solid color-mix(in srgb,var(--tierra) 25%,transparent);padding:1rem 0;display:grid;grid-template-columns:4.5rem 1fr;column-gap:1.1rem;align-items:center}
+.miembro-foto{width:4.5rem;height:4.5rem;border-radius:50%;object-fit:cover;grid-row:span 4;align-self:start}
+.miembro-texto{display:flex;flex-direction:column;gap:.15rem}
+.miembro-detalle{font-size:.88rem;color:var(--tinta-suave)}
 .equipo-lista li:last-child{border-bottom:1px solid color-mix(in srgb,var(--tierra) 25%,transparent)}
 .miembro-nombre{font:400 1.15rem/1.3 var(--f-titulo);color:var(--tinta)}
 .miembro-rol{font-size:.92rem;letter-spacing:.02em;color:var(--tinta-suave)}
@@ -425,7 +428,7 @@ p{margin:0}
         <h2 id="t-sobre">Un equipo con una misma mirada</h2>
         <p class="equipo-entrada">Profesionales de la psicología, la medicina y la psiconeuroinmunología (PNI) que colaboran compartiendo método, ética y criterio, coordinados alrededor de cada persona.</p>
         <ul class="equipo-lista">
-          <li><span class="miembro-nombre">Rocío Vilches</span><span class="miembro-rol">Fundadora · Psicóloga sanitaria · Terapeuta EMDR</span><a class="miembro-mas" href="https://rociovilches.com/" target="_blank" rel="noopener">Ver más</a></li>
+          <li><img class="miembro-foto" src="img/equipo-rocio-240.webp" width="240" height="240" alt="Rocío Vilches" loading="lazy" decoding="async"><div class="miembro-texto"><span class="miembro-nombre">Rocío Vilches</span><span class="miembro-rol">Fundadora · Psicóloga sanitaria · Terapeuta EMDR · Especialista en clínica infantil</span><span class="miembro-detalle">Adultos, parejas e infantojuvenil · Castellano</span><a class="miembro-mas" href="https://rociovilches.com/" target="_blank" rel="noopener">Ver más</a></div></li>
         </ul>
       </div>
     </div>
