@@ -244,6 +244,10 @@ p{margin:0}
 .contacto .envoltura{display:grid;justify-items:center;gap:1.5rem}
 .contacto h2{color:var(--marfil)}
 .contacto p{max-width:34rem;color:var(--beige)}
+.contacto .agenda{width:100%;max-width:60rem;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(40,28,18,.25)}
+.contacto .agenda iframe{display:block;width:100%;height:1150px;border:0}
+@media (min-width:901px){.contacto .agenda iframe{height:720px}}
+.contacto .agenda-alt{font-size:.95rem}
 .datos{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 2rem;font-size:.95rem;color:var(--marfil)}
 
 /* Pie */
@@ -478,7 +482,9 @@ p{margin:0}
     <div class="envoltura">
       <p class="etiqueta" style="color:var(--dorado)">Contacto</p>
       <h2 id="t-contacto">Empecemos con una charla de 15 minutos</h2>
-      <p>Escríbenos por WhatsApp y te respondemos con los horarios disponibles. Sin compromiso.</p>
+      <p>Elige el día y la hora que te vayan bien. Es por videollamada o teléfono, sin coste y sin compromiso.</p>
+      <div class="agenda"><iframe src="https://app.moodo.ai/reservar/reserva-una-charla-de-15-minutos-sin-coste" title="Agenda para reservar la charla de 15 minutos" loading="lazy"></iframe></div>
+      <p class="agenda-alt">¿Prefieres escribirnos? También puedes pedirla por WhatsApp.</p>
       <a class="boton boton-bosque" href="https://wa.me/34613032874?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20la%20charla%20de%2015%20minutos." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Escribir por WhatsApp</a>
       <div class="datos"><span>Alella · Maresme · Barcelona</span><span>Presencial y online</span></div>
     </div>
@@ -491,7 +497,7 @@ p{margin:0}
     <span class="marca" aria-hidden="true"><svg viewBox="0 0 535.5 199.1"><use href="#om"/></svg></span>
     <span>© 2026 Om · Centro integrativo de regulación del sistema nervioso</span>
     <nav aria-label="Servicios"><a href="terapia-emdr.html">Terapia EMDR</a><a href="orientacion-crianza.html">Orientación en crianza</a><a href="por-que-regularse.html">Por qué regularse</a></nav>
-    <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><span>Esta web no usa cookies</span></nav>
+    <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><span>Sin cookies propias</span></nav>
   </div>
 </footer>
 
