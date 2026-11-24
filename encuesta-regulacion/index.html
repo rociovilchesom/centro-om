@@ -117,8 +117,7 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--tierra);outline
 .escala-niveles{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:.3rem}
 .escala-niveles span{height:8px;border-radius:999px;background:var(--linea)}
 .escala-niveles span.on{background:var(--tierra)}
-.previa{border:1px dashed var(--tierra);border-radius:14px;padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.8rem;font-size:.95rem}
-.previa h3{color:var(--tierra)}
+.aviso-provisional{background:rgba(191,167,116,.16);border-left:4px solid var(--dorado,#BFA774);border-radius:8px;padding:.8rem 1rem}
 .fila{display:grid;grid-template-columns:minmax(0,1fr) 3.2rem 7rem;gap:.8rem;align-items:center}
 .fila .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
 .fila .b{height:8px;background:var(--linea);border-radius:999px;overflow:hidden}
@@ -192,15 +191,10 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--tierra);outline
       <p id="p-nivel" class="nivel"></p>
       <div class="escala-niveles" id="p-escala"></div>
     </div>
-    <p>Es una foto de cómo está tu sistema nervioso ahora, no un diagnóstico. Lo comentaremos contigo en tu próxima sesión, junto con el resto de tu valoración.</p>
+    <p class="aviso-provisional" id="aviso-provisional"><b>Este nivel es provisional.</b> Se confirma en la valoración de una hora, junto con la entrevista y el resto de pruebas.</p>
+    <p>Es una foto de cómo está tu sistema nervioso ahora, no un diagnóstico.</p>
   </section>
 
-  <section class="previa" id="previa" hidden>
-    <h3>Vista de la terapeuta</h3>
-    <p class="nota">Solo aparece en esta vista previa. En la web, el paciente ve únicamente el agradecimiento y estos resultados llegan a la hoja de Google de OM.</p>
-    <div id="resultados"></div>
-    <button type="button" class="boton secundario" id="btn-otra">Volver a la encuesta</button>
-  </section>
 </div>
 
 <script>
@@ -228,39 +222,39 @@ const APARTADOS = [
     ["Desconectarte de lo que está pasando (por ejemplo, irte con la mente a otro lugar, dejar de sentir o no reconocerte)."],
     ["Guardarte lo que sientes y no mostrarlo, aunque te esté afectando."],
     ["Recurrir a la comida, el alcohol u otras sustancias, las pantallas, las compras o el trabajo para calmar el malestar o evitar sentirlo."],
-    ["Después de una situación estresante, poder volver a la calma con recursos que te sirven (por ejemplo, respirar, moverte o hablar con alguien de confianza).",1],
-    ["Darte cuenta de qué emoción sientes y poder ponerle nombre.",1],
-    ["Notar en qué lugar del cuerpo sientes tus emociones.",1],
-    ["Darte cuenta de cuándo tienes hambre, sed, frío, cansancio o ganas de ir al baño.",1]]},
+    ["Después de una situación estresante, poder volver a la calma con recursos que te sirven (por ejemplo, respirar, moverte o hablar con alguien de confianza)."],
+    ["Darte cuenta de qué emoción sientes y poder ponerle nombre."],
+    ["Notar en qué lugar del cuerpo sientes tus emociones."],
+    ["Darte cuenta de cuándo tienes hambre, sed, frío, cansancio o ganas de ir al baño."]]},
   {n:3,id:"pensamiento",titulo:"Pensamiento y atención",escala:FREC,
    items:[
     ["Tener pensamientos que se repiten o se aceleran, y no poder frenarlos."],
     ["Tener neblina mental: notar la mente nublada o lenta, con dificultad para concentrarte o para recordar."],
-    ["Tener la mente clara y poder concentrarte en lo que haces.",1]]},
+    ["Tener la mente clara y poder concentrarte en lo que haces."]]},
   {n:4,id:"autocuidado",titulo:"Autocuidado",escala:FREC,
    items:[
     ["Ponerte en último lugar, por ejemplo, decir que sí cuando quieres decir que no o hacer lo que no te apetece para no quedar mal."],
-    ["Defender tu espacio y lo que necesitas con tranquilidad, sin tener que pelear.",1],
+    ["Defender tu espacio y lo que necesitas con tranquilidad, sin tener que pelear."],
     ["Hablarte con dureza o exigirte más de lo que puedes dar."],
-    ["Tener tiempo para ti, para descansar o para hacer lo que te gusta, sin sentir culpa.",1],
+    ["Tener tiempo para ti, para descansar o para hacer lo que te gusta, sin sentir culpa."],
     ["Sentirte culpable aunque no hayas hecho nada malo."],
     ["Sentir vergüenza de cómo eres o sentir que no eres suficiente."],
-    ["Tratarte con comprensión y amabilidad cuando algo te sale mal o atraviesas un momento difícil.",1],
+    ["Tratarte con comprensión y amabilidad cuando algo te sale mal o atraviesas un momento difícil."],
     ["Estar pendiente de la aprobación de los demás, por ejemplo, compararte con otras personas o cambiar tu forma de ser para encajar."]]},
   {n:5,id:"sueno",titulo:"Sueño y energía",escala:FREC,
    items:[
     ["Tardar en quedarte dormido/a o despertarte por la noche sin poder volver a dormirte."],
     ["Tener pesadillas."],
     ["Levantarte sin sentirte descansado/a."],
-    ["Sentir ganas y curiosidad, y poder disfrutar del día a día.",1],
+    ["Sentir ganas y curiosidad, y poder disfrutar del día a día."],
     ["Funcionar a máximo rendimiento y, de pronto, quedarte sin fuerzas."]]},
   {n:6,id:"vinculos",titulo:"Vínculos",escala:GRADO,
    consigna:"<b>Cómo responder a este apartado:</b> piensa en cómo te sientes en general en tus relaciones cercanas (pareja, familia o amistades) y marca hasta qué punto te describe cada frase: Nada, Poco, Algo, Bastante o Mucho.",
    items:[
-    ["Sentir que tienes personas con las que contar y que te acompañan.",0,"seguridad"],
-    ["Sentir angustia cuando alguien se aleja, tarda en responderte o se enfada contigo.",0,"ansiedad"],
-    ["Pedir ayuda y expresar lo que necesitas sin sentir que molestas.",0,"seguridad"],
-    ["Sentirte incómodo/a cuando alguien busca más cercanía emocional contigo o tender a tomar distancia.",0,"evitacion"]]},
+    ["Sentir que tienes personas con las que contar y que te acompañan."],
+    ["Sentir angustia cuando alguien se aleja, tarda en responderte o se enfada contigo."],
+    ["Pedir ayuda y expresar lo que necesitas sin sentir que molestas."],
+    ["Sentirte incómodo/a cuando alguien busca más cercanía emocional contigo o tender a tomar distancia."]]},
   {n:7,id:"cuerpo",titulo:"Cuerpo",escala:MOLESTIA,
    consigna:"<b>Cómo responder a este apartado:</b> piensa en las últimas 4 semanas y marca cuánto te ha molestado cada uno de estos problemas: Nada, Un poco, Algo, Bastante o Mucho.",
    items:[
@@ -358,45 +352,6 @@ function respuestas(){
   return r;
 }
 
-// Puntuación: 0-100, más alto = más desregulación (salvo seguridad en Vínculos).
-function puntuar(r){
-  const media = arr => arr.reduce((a,b)=>a+b,0)/arr.length;
-  const res = { desregulacion: 100 - reparto.seguridad };
-  const fuera = ESTADOS.slice(1).map(e=>[e.nombre,reparto[e.id]]).sort((a,b)=>b[1]-a[1]);
-  res.perfil = fuera[0][1] > 0 ? fuera[0][0] : "—";
-  APARTADOS.forEach(a=>{
-    if (a.id==="vinculos"){
-      const dims = {seguridad:[],ansiedad:[],evitacion:[]};
-      a.items.forEach((it,i)=>dims[it[2]].push(r[`${a.id}_${i+1}`]));
-      res.vinculos = Math.round(media([...dims.seguridad.map(x=>4-x),...dims.ansiedad,...dims.evitacion])*25);
-      res.vinculos_ansiedad = Math.round(media(dims.ansiedad)*25);
-      res.vinculos_evitacion = Math.round(media(dims.evitacion)*25);
-    } else {
-      const v = a.items.map((it,i)=>{ const x = r[`${a.id}_${i+1}`]; return it[1] ? 4-x : x; });
-      res[a.id] = Math.round(media(v)*25);
-    }
-  });
-  const resto = ["regulacion","pensamiento","autocuidado","sueno","vinculos","cuerpo"].map(k=>res[k]);
-  res.indice = Math.round(0.5*res.desregulacion + 0.5*media(resto));
-  res.nivel = res.indice<=20?1:res.indice<=40?2:res.indice<=60?3:res.indice<=80?4:5;
-  res.nivel_nombre = ["","Regulación","Desregulación leve","Desregulación moderada","Desregulación alta","Desregulación muy alta"][res.nivel];
-  return res;
-}
-
-function mostrarResultados(p){
-  const filas = [
-    ["Apartado 1 · desregulación (100 − Seguridad y conexión)",p.desregulacion],
-    ["Regulación emocional",p.regulacion],["Pensamiento y atención",p.pensamiento],
-    ["Autocuidado",p.autocuidado],["Sueño y energía",p.sueno],
-    ["Vínculos",p.vinculos],["Vínculos · ansiedad",p.vinculos_ansiedad],["Vínculos · evitación",p.vinculos_evitacion],
-    ["Cuerpo",p.cuerpo]];
-  document.getElementById("resultados").innerHTML =
-    `<p>Índice de desregulación: <b>${p.indice}</b> · nivel ${p.nivel} (${p.nivel_nombre}). Estado fuera de la ventana con más tiempo: <b>${p.perfil}</b>.</p>` +
-    filas.map(([t,v])=>`<div class="fila"><span>${t}</span><span class="v">${v}</span><span class="b"><i style="width:${v}%"></i></span></div>`).join("") +
-    `<div class="fila"><span>Vínculos · seguridad (más alto = mejor)</span><span class="v">${p.vinculos_seguridad}</span><span class="b"><i style="width:${p.vinculos_seguridad}%;background:var(--bosque)"></i></span></div>
-     <p class="nota">Escala de 0 a 100. Salvo Vínculos · seguridad, un número más alto indica más desregulación. Índice = 0,5 × apartado 1 + 0,5 × media de los apartados 2 a 7. Niveles provisionales.</p>`;
-}
-
 document.getElementById("encuesta").addEventListener("submit",async ev=>{
   ev.preventDefault();
   const f = ev.target, err = document.getElementById("error");
@@ -416,30 +371,31 @@ document.getElementById("encuesta").addEventListener("submit",async ev=>{
     return;
   }
   err.hidden = true;
-  const p = puntuar(r);
-  const envio = {fecha:new Date().toISOString(),nombre,email,reparto:{...reparto},respuestas:r,puntuacion:p};
-  if (URL_HOJA){
-    const b = document.getElementById("btn-enviar");
-    b.disabled = true; b.textContent = "Enviando…";
-    try { await fetch(URL_HOJA,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({...envio, web: f.web ? f.web.value : ""})}); }
-    catch(e){ err.textContent = "No se han podido enviar las respuestas. Revisa tu conexión y vuelve a pulsar Enviar."; err.hidden=false; b.disabled=false; b.textContent="Enviar respuestas"; return; }
+  const envio = {fecha:new Date().toISOString(),nombre,email,reparto:{...reparto},respuestas:r};
+  const b = document.getElementById("btn-enviar");
+  b.disabled = true; b.textContent = "Enviando…";
+  let p = null;
+  try {
+    const resp = await fetch(URL_HOJA,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({...envio, web: f.web ? f.web.value : ""})});
+    try { const j = await resp.json(); if (j && j.ok && j.indice !== undefined) p = j; } catch(e){}
+  } catch(e){
+    // Si la respuesta no se puede leer pero el envío llegó, seguimos; si no hay conexión, avisamos.
+    if (!navigator.onLine){ err.textContent = "No se han podido enviar las respuestas. Revisa tu conexión y vuelve a pulsar Enviar."; err.hidden=false; b.disabled=false; b.textContent="Enviar respuestas"; return; }
   }
   f.hidden = true;
   document.querySelector(".progreso").hidden = true;
   document.getElementById("gracias").hidden = false;
-  document.getElementById("p-indice").textContent = p.indice;
-  document.getElementById("p-nivel").textContent = `Nivel ${p.nivel} de 5: ${p.nivel_nombre}`;
-  document.getElementById("p-escala").innerHTML = [1,2,3,4,5].map(n=>`<span class="${n<=p.nivel?'on':''}"></span>`).join("");
-  if (MODO_PREVIA){ mostrarResultados(p); document.getElementById("previa").hidden = false; }
+  if (p){
+    document.getElementById("p-indice").textContent = p.indice;
+    document.getElementById("p-nivel").textContent = `Nivel ${p.nivel} de 5: ${p.nivel_nombre}`;
+    document.getElementById("p-escala").innerHTML = [1,2,3,4,5].map(n=>`<span class="${n<=p.nivel?'on':''}"></span>`).join("");
+  } else {
+    document.querySelector(".resultado-paciente").hidden = true;
+    document.getElementById("aviso-provisional").textContent = "Te daremos tu resultado en la valoración.";
+  }
   window.scrollTo({top:0,behavior:"smooth"});
 });
 
-document.getElementById("btn-otra").addEventListener("click",()=>{
-  document.getElementById("encuesta").hidden = false;
-  document.querySelector(".progreso").hidden = false;
-  document.getElementById("gracias").hidden = true;
-  document.getElementById("previa").hidden = true;
-});
 
 pintarEstados();
 pintarApartados();
