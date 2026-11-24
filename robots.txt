@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /encuesta-regulacion/
 
 Sitemap: https://centro-om.com/sitemap.xml
